@@ -12,7 +12,7 @@ fourmis = tk.Label(canva, )
 
 
 
-#fourmis = canva.create_rectangle(x0 - 5, y0 - 5, x0 + 5, y0 + 5, fill="red")
+
 
 
 
