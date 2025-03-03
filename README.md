@@ -1,3 +1,3 @@
 # Projet-Fourmi-de-Langton
-
-bon bon bon
+Gasotn Barthalon, Paolo Pierre-Alexis, Raphaël Senouf, Odilon Benedetti
+LDDMP L1
