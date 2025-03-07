@@ -1,21 +1,42 @@
 import tkinter as tk
+
+larg, haut = 800, 800
+
 racine = tk.Tk()
+racine.config(bg="lightgrey")
 racine.title('Test de grille')
-Canvas = tk.Canvas(racine, bg = 'white', height = 800, width = 800)
+canvas = tk.Canvas(racine, bg="white", height=haut, width=larg)
+
 L = 10
 couleur = 'white'
 
 
+def quadrillage():
+    """création d'un quadrillage"""
+    global larg, haut
+    long_case = 20
+
+    for i in range(0, larg, long_case):
+        canvas.create_line(i, 0, i, haut, fill="black")
+
+    for j in range(0, larg, long_case):
+        canvas.create_line(0, j, larg, j, fill="black")
+
+
 def ch_couleur():
+    """changer la couleur du fond du canva"""
     global couleur
     if couleur == 'white':
         couleur = 'black'
     elif couleur == 'black':
         couleur = 'white'
-    carre1.config(fg = couleur)
+    canvas.config(bg=couleur)
 
 
-carre1 = tk.Button(Canvas, height=L, width=L, fg='yellow', command=ch_couleur)
-Canvas.grid()
-carre1.grid(row = 0, column = 0)
+carre1 = tk.Button(racine, padx=L, pady=L, text="changer couleur",
+                   bg="darkgrey", fg='black', command=quadrillage)
+
+carre1.grid()
+
+canvas.grid(row=0, column=1)
 racine.mainloop()
