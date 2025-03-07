@@ -34,7 +34,7 @@ def ch_couleur():
 
 
 carre1 = tk.Button(racine, padx=L, pady=L, text="changer couleur",
-                   bg="darkgrey", fg='black', command=quadrillage)
+                   bg="darkgrey", fg='black', command=ch_couleur)
 
 carre1.grid()
 
