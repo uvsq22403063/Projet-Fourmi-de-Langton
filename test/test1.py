@@ -1,6 +1,6 @@
 import tkinter as tk
 
-larg, haut = 800, 800
+larg, haut = 800, 600
 
 racine = tk.Tk()
 racine.config(bg="lightgrey")
@@ -14,7 +14,7 @@ couleur = 'white'
 def quadrillage():
     """création d'un quadrillage"""
     global larg, haut
-    long_case = 20
+    long_case = 25
 
     for i in range(0, larg, long_case):
         canvas.create_line(i, 0, i, haut, fill="black")
