@@ -21,6 +21,7 @@ def nex():
 window = tk.Tk()
 canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 
+
 # création des boutons de la fenetre
 close = tk.Button(window, bg="red", text="Fermer", fg="black",
                   font=("Arial", 8))
@@ -36,13 +37,13 @@ four_moins = tk.Button(window, bg="grey", fg="black", text="-",
                        font=("Impact", 14), command=nexte)
 fourmis = tk.Label(window, text="Fourmis")
 
-play.grid(row=2, column=4)
-nexte.grid(row=2, column=3)
-pause.grid(row=2, column=2)
-four_plus.grid(row=1, column=1, padx=5, pady=5)
-four_moins.grid(row=1, column=0, padx=5, pady=5)
-fourmis.grid(row=1, column=0)
+play.grid(row=3, column=4)
+nexte.grid(row=3, column=3)
+pause.grid(row=3, column=2)
+four_plus.grid(row=2, column=1, padx=5, pady=5, sticky='n')
+four_moins.grid(row=2, column=0, padx=5, pady=5, sticky='n')
+fourmis.grid(row=1, column=0, sticky="s")
 close.grid(row=0, column=0)
 
-canva.grid(row=1, column=2, columnspan=3)
+canva.grid(row=1, column=2, columnspan=3, rowspan=2)
 window.mainloop()
