@@ -34,7 +34,7 @@ for i in range(larg // taille_carre):
 k = 30
 u = 30
 direction = "e"
-pauses = False
+pauses = True
 couleur[k][u] = 0
 
 
@@ -87,17 +87,17 @@ def deplacement():
     canva.after(2, deplacement)
 
 
-bouton1 = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
-                    bd=0, highlightthickness=0, command=deplacement)
+play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
+                 bd=0, highlightthickness=0, command=deplacement)
 
-bouton2 = tk.Button(window, text="Pause/play", bg="#a3491f",
-                    font=("Impact", 14), bd=0,
-                    highlightthickness=0, command=pause)
-
-bouton2.grid(row=2, column=0)
-bouton1.grid(row=1, column=0)
+pausse = tk.Button(window, text="Pause/play", bg="#a3491f",
+                   font=("Impact", 14), bd=0,
+                   highlightthickness=0, command=pause)
 
 
+deplacement()
+
+pausse.grid(row=1, column=0)
 test.grid(row=0, column=0)
 canva.grid(column=1, row=0, rowspan=4)
 window.mainloop()
