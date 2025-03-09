@@ -20,7 +20,8 @@ def pausse():
 
 def nex():
     """on dit que se bouton est activable que si jouer est en pause
-       et genre ici on met un if pour check si c'est en pause et si oui alors on fait avancer la fourmis
+       et genre ici on met un if pour check si c'est en pause
+       et si oui alors on fait avancer la fourmis
        sinon il se passe rien
        ex: if pause == true:
             programme qui fait avancer fourmis d'un mouvement
@@ -40,7 +41,7 @@ canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 def quadrillage():
     """création d'un quadrillage"""
     global larg, haut
-    long_case = 20
+    long_case = 10
 
     for i in range(0, larg, long_case):
         canva.create_line(i, 0, i, haut, fill="black")
