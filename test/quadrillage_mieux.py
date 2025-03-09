@@ -42,36 +42,39 @@ couleur[k][u] = 0
 def deplacement():
     """le programme du mouvement il manque encore des truc a corriger"""
     global k, u, direction
-    if couleur[k][u] == 0:
-        canva.itemconfig(cases[k][u], fill="black")
-        couleur[k][u] = 1
-        if direction == "s":
-            direction = "w"
-            k -= 1
-        elif direction == "w":
-            direction = "n"
-            u -= 1
-        elif direction == "n":
-            direction = "e"
-            k += 1
-        elif direction == "e":
-            direction = "s"
-            u += 1
-    elif couleur[k][u] == 1:
-        canva.itemconfig(cases[k][u], fill="white")
-        couleur[k][u] = 0
-        if direction == "s":
-            direction = "e"
-            k += 1
-        elif direction == "e":
-            direction = "n"
-            u -= 1
-        elif direction == "n":
-            direction = "w"
-            k -= 1
-        elif direction == "w":
-            direction = "s"
-            u += 1
+    if k or u >= 0:
+        if couleur[k][u] == 0:
+            canva.itemconfig(cases[k][u], fill="black")
+            couleur[k][u] = 1
+            if direction == "s":
+                direction = "w"
+                k -= 1
+            elif direction == "w":
+                direction = "n"
+                u -= 1
+            elif direction == "n":
+                direction = "e"
+                k += 1
+            elif direction == "e":
+                direction = "s"
+                u += 1
+        elif couleur[k][u] == 1:
+            canva.itemconfig(cases[k][u], fill="white")
+            couleur[k][u] = 0
+            if direction == "s":
+                direction = "e"
+                k += 1
+            elif direction == "e":
+                direction = "n"
+                u -= 1
+            elif direction == "n":
+                direction = "w"
+                k -= 1
+            elif direction == "w":
+                direction = "s"
+                u += 1
+    else:
+        return
     canva.after(10, deplacement)
 
 deplacement()
