@@ -85,8 +85,8 @@ def deplacement():
     canva.after(1, deplacement)
 
 
-play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
-                 bd=0, highlightthickness=0, command=deplacement)
+#play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
+#                 bd=0, highlightthickness=0, command=deplacement)
 
 pausse = tk.Button(window, text="Pause/play", bg="#a3491f",
                    font=("Impact", 14), bd=0,
