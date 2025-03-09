@@ -30,7 +30,8 @@ for i in range(larg // taille_carre):
 canva.itemconfig(cases[1][1], fill="white")
 
 
-# petit test j'ai ajouté une matrice de 0 de meme taille que la matrice de carré pour
+# petit test j'ai ajouté une matrice de 0 de meme
+# taille que la matrice de carré pour
 # pouvoir reconnaitre les couleur des carrés
 k = 30
 u = 30
@@ -77,19 +78,8 @@ def deplacement():
         return
     canva.after(2, deplacement)
 
+
 deplacement()
-
-
-
-
-print(couleur)
-
-
-
-
-
-
-
 
 
 test.grid(row=0, column=0)
