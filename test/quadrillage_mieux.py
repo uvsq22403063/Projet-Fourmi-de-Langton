@@ -27,8 +27,6 @@ for i in range(larg // taille_carre):
     cases.append(colonnes)
     couleur.append(colonnes_couleur)
 
-canva.itemconfig(cases[1][1], fill="white")
-
 
 # petit test j'ai ajouté une matrice de 0 de meme
 # taille que la matrice de carré pour
