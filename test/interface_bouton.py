@@ -22,7 +22,7 @@ window = tk.Tk()
 window.title('Fourmi de Langton')
 canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 
-
+#Mis cette fonction ici pour voir le rendu
 def quadrillage():
     """création d'un quadrillage"""
     global larg, haut
