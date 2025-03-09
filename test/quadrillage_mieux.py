@@ -1,7 +1,7 @@
 import tkinter as tk
 
 taille_carre = 10
-larg, haut = 800, 600
+larg, haut = 900, 700
 cases = []
 couleur = []
 
