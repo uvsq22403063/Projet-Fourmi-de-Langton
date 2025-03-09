@@ -39,15 +39,6 @@ if couleur[1][1] == 0:
 else:
     canva.itemconfig(cases[1][1], fill="white")
     couleur[1][1] = 0
-
-
-
-
-
-
-
-
-
 print(couleur)
 
 
