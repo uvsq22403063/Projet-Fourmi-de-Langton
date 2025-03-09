@@ -6,10 +6,10 @@ cases = []
 couleur = []
 
 window = tk.Tk()
-window.config(bg="lightgrey")
+window.config(bg="#102531")
 canva = tk.Canvas(window, width=larg, height=haut)
 
-test = tk.Label(text="Me voici")
+test = tk.Label(text="Me voici", bg="#a3491f")
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
