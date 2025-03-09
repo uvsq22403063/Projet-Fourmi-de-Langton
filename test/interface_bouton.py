@@ -1,6 +1,11 @@
 import tkinter as tk
 
 larg, haut = 800, 600
+x = 0
+y = 0
+window = tk.Tk()
+window.title('Fourmi de Langton')
+canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 
 
 def jouer():
@@ -8,13 +13,10 @@ def jouer():
             (programme qui fait avancer fourmis)
             canva.after(500, jouer)"""
 
-    return
-
 
 def pausse():
     """On fait un truc du genre avec un booléen et on met un while dans jouer
        ex : pause = true"""
-
     return
 
 
@@ -30,11 +32,6 @@ def nex():
 
     return
 
-
-window = tk.Tk()
-window.title('Fourmi de Langton')
-canva = tk.Canvas(window, bg="white", width=larg, height=haut)
-
 # Mis cette fonction ici pour voir le rendu
 
 
@@ -48,6 +45,22 @@ def quadrillage():
 
     for j in range(0, larg, long_case):
         canva.create_line(0, j, larg, j, fill="black")
+
+
+# J'ai créer cette fonction pour voir si la creation de rectangle
+# matchais bien avec la cadrillage et ça rend vraiment bien testez et essayez
+# de jouer avec les paramettres mais ça va rendre super avec
+# cette tecnhique qui est vraiment simple en plus
+
+
+def ligne_de_rectangle():
+    global x, y
+    canva.create_rectangle(x, y, x+10, y+10, fill="black")
+    x += 10
+    canva.after(500, ligne_de_rectangle)
+
+
+ligne_de_rectangle()
 
 
 # création des boutons de la fenetre
