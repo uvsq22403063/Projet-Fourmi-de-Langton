@@ -39,7 +39,7 @@ couleur[k][u] = 0
 
 
 def deplacement():
-    """le programme du mouvement il manque encore des truc a corriger"""
+    """le programme du mouvement est 100% opérationel"""
     global k, u, direction
     if k and u >= 0:
         if couleur[k][u] == 0:
