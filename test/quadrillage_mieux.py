@@ -20,8 +20,8 @@ for i in range(larg // taille_carre):
         y0 = j * 10
         x1 = (i+1) * 10
         y1 = (j+1) * 10
-        carre = canva.create_rectangle(x0, y0, x1, y1, outline="darkgrey",
-                                       fill="white", width=1)
+        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#2ed3cd",
+                                       fill="#0d5a57", width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
     cases.append(colonnes)
@@ -43,7 +43,7 @@ def deplacement():
     global k, u, direction
     if k and u >= 0:
         if couleur[k][u] == 0:
-            canva.itemconfig(cases[k][u], fill="black")
+            canva.itemconfig(cases[k][u], fill="#a8681d")
             couleur[k][u] = 1
             if direction == "s":
                 direction = "w"
@@ -58,7 +58,7 @@ def deplacement():
                 direction = "s"
                 u += 1
         elif couleur[k][u] == 1:
-            canva.itemconfig(cases[k][u], fill="white")
+            canva.itemconfig(cases[k][u], fill="#0d5a57")
             couleur[k][u] = 0
             if direction == "s":
                 direction = "e"
