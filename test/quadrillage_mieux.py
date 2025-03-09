@@ -37,15 +37,14 @@ direction = "e"
 pauses = False
 couleur[k][u] = 0
 
+
 def pause():
+    """met en pause et restart lorsquon appui une deuxiemme fois"""
     global pauses
     if pauses is False:
         pauses = True
     elif pauses is True:
         pauses = False
-
-
-
 
 
 def deplacement():
@@ -89,9 +88,10 @@ def deplacement():
 
 
 bouton1 = tk.Button(window, text="Play", bg="#a3491f", font=("Impact", 14),
-                   bd=0, highlightthickness=0, command=deplacement)
+                    bd=0, highlightthickness=0, command=deplacement)
+
 bouton2 = tk.Button(window, text="Pause", bg="#a3491f", font=("Impact", 14),
-                   bd=0, highlightthickness=0, command=pause)
+                    bd=0, highlightthickness=0, command=pause)
 
 bouton2.grid(row=2, column=0)
 bouton1.grid(row=1, column=0)
