@@ -23,6 +23,18 @@ window.title('Fourmi de Langton')
 canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 
 
+def quadrillage():
+    """création d'un quadrillage"""
+    global larg, haut
+    long_case = 20
+
+    for i in range(0, larg, long_case):
+        canva.create_line(i, 0, i, haut, fill="black")
+
+    for j in range(0, larg, long_case):
+        canva.create_line(0, j, larg, j, fill="black")
+
+
 # création des boutons de la fenetre
 close = tk.Button(window, bg="red", text="Fermer", fg="black",
                   font=("Arial", 8), command=window.destroy)
@@ -45,6 +57,6 @@ four_plus.grid(row=2, column=1, padx=5, pady=5, sticky='n')
 four_moins.grid(row=2, column=0, padx=5, pady=5, sticky='nw')
 fourmis.grid(row=1, column=0, sticky="s")
 close.grid(row=0, column=0)
-
+quadrillage()
 canva.grid(row=1, column=2, columnspan=3, rowspan=2)
 window.mainloop()
