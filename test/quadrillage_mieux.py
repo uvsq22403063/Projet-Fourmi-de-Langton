@@ -34,10 +34,13 @@ canva.itemconfig(cases[1][1], fill="white")
 # pouvoir reconnaitre les couleur des carrés
 k = 50
 u = 50
-direction = "s"
+direction = "e"
 
 couleur[k][u] = 0
+
+
 def deplacement():
+    """le programme du mouvement il manque encore des truc a corriger"""
     global k, u, direction
     if couleur[k][u] == 0:
         canva.itemconfig(cases[k][u], fill="black")
@@ -69,7 +72,7 @@ def deplacement():
         elif direction == "w":
             direction = "s"
             u += 1
-    canva.after(20, deplacement)
+    canva.after(30, deplacement)
 
 deplacement()
 
