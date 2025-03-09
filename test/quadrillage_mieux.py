@@ -34,55 +34,69 @@ for i in range(larg // taille_carre):
 k = 30
 u = 30
 direction = "e"
-
+pauses = False
 couleur[k][u] = 0
+
+def pause():
+    global pauses
+    if pauses is False:
+        pauses = True
+    elif pauses is True:
+        pauses = False
+
+
+
 
 
 def deplacement():
     """le programme du mouvement est 100% opérationel"""
     global k, u, direction
-    if k and u >= 0:
-        if couleur[k][u] == 0:
-            canva.itemconfig(cases[k][u], fill="#a8681d")
-            couleur[k][u] = 1
-            if direction == "s":
-                direction = "w"
-                k -= 1
-            elif direction == "w":
-                direction = "n"
-                u -= 1
-            elif direction == "n":
-                direction = "e"
-                k += 1
-            elif direction == "e":
-                direction = "s"
-                u += 1
-        elif couleur[k][u] == 1:
-            canva.itemconfig(cases[k][u], fill="#0d5a57")
-            couleur[k][u] = 0
-            if direction == "s":
-                direction = "e"
-                k += 1
-            elif direction == "e":
-                direction = "n"
-                u -= 1
-            elif direction == "n":
-                direction = "w"
-                k -= 1
-            elif direction == "w":
-                direction = "s"
-                u += 1
-    else:
-        return
+    if pauses is False:
+        if k and u >= 0:
+            if couleur[k][u] == 0:
+                canva.itemconfig(cases[k][u], fill="#a8681d")
+                couleur[k][u] = 1
+                if direction == "s":
+                    direction = "w"
+                    k -= 1
+                elif direction == "w":
+                    direction = "n"
+                    u -= 1
+                elif direction == "n":
+                    direction = "e"
+                    k += 1
+                elif direction == "e":
+                    direction = "s"
+                    u += 1
+            elif couleur[k][u] == 1:
+                canva.itemconfig(cases[k][u], fill="#0d5a57")
+                couleur[k][u] = 0
+                if direction == "s":
+                    direction = "e"
+                    k += 1
+                elif direction == "e":
+                    direction = "n"
+                    u -= 1
+                elif direction == "n":
+                    direction = "w"
+                    k -= 1
+                elif direction == "w":
+                    direction = "s"
+                    u += 1
+        else:
+            return
     canva.after(2, deplacement)
 
 
-bouton = tk.Button(window, text="Play", bg="#a3491f", font=("Impact", 14),
+bouton1 = tk.Button(window, text="Play", bg="#a3491f", font=("Impact", 14),
                    bd=0, highlightthickness=0, command=deplacement)
+bouton2 = tk.Button(window, text="Pause", bg="#a3491f", font=("Impact", 14),
+                   bd=0, highlightthickness=0, command=pause)
 
-bouton.grid(row=1, column=0)
+bouton2.grid(row=2, column=0)
+bouton1.grid(row=1, column=0)
 
 
 test.grid(row=0, column=0)
-canva.grid(column=1, row=0, rowspan=3)
+canva.grid(column=1, row=0, rowspan=4)
 window.mainloop()
