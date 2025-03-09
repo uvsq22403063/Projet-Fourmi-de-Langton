@@ -59,7 +59,7 @@ def deplacement():
             u += 1
     elif couleur[k][u] == 1:
         canva.itemconfig(cases[k][u], fill="white")
-        couleur[1][1] = 0
+        couleur[k][u] = 0
         if direction == "s":
             direction = "e"
             k += 1
