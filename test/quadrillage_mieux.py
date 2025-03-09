@@ -7,7 +7,7 @@ couleur = []
 
 window = tk.Tk()
 window.config(bg="#102531")
-canva = tk.Canvas(window, width=larg, height=haut)
+canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
 test = tk.Label(text="Me voici", bg="#a3491f")
 
