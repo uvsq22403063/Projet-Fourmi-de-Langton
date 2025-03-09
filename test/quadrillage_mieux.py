@@ -42,7 +42,7 @@ couleur[k][u] = 0
 def deplacement():
     """le programme du mouvement il manque encore des truc a corriger"""
     global k, u, direction
-    if k or u >= 0:
+    if k and u >= 0:
         if couleur[k][u] == 0:
             canva.itemconfig(cases[k][u], fill="black")
             couleur[k][u] = 1
@@ -75,7 +75,7 @@ def deplacement():
                 u += 1
     else:
         return
-    canva.after(10, deplacement)
+    canva.after(2, deplacement)
 
 deplacement()
 
