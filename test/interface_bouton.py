@@ -4,16 +4,28 @@ larg, haut = 800, 600
 
 
 def jouer():
+    """ex: while pause = false:
+            (programme qui fait avancer fourmis)
+            canva.after(500, jouer)"""
 
     return
 
 
 def pausse():
+    """On fait un truc du genre avec un booléen et on met un while dans jouer
+       ex : pause = true"""
 
     return
 
 
 def nex():
+    """on dit que se bouton est activable que si jouer est en pause
+       et genre ici on met un if pour check si c'est en pause et si oui alors on fait avancer la fourmis
+       sinon il se passe rien
+       ex: if pause == true:
+            programme qui fait avancer fourmis d'un mouvement
+           else:
+            il se passe rien(peut être même pas besoin de mettre else)"""
 
     return
 
