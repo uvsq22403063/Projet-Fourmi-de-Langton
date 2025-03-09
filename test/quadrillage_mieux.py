@@ -1,7 +1,11 @@
 import tkinter as tk
 
+color = "#0d5a57"
 taille_carre = 10
 larg, haut = 900, 700
+k, u = 45, 35
+direction = "w"
+pauses = True
 cases = []
 couleur = []
 
@@ -21,7 +25,7 @@ for i in range(larg // taille_carre):
         x1 = (i+1) * 10
         y1 = (j+1) * 10
         carre = canva.create_rectangle(x0, y0, x1, y1, outline="#2ed3cd",
-                                       fill="#0d5a57", width=1)
+                                       fill=color, width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
     cases.append(colonnes)
@@ -31,11 +35,8 @@ for i in range(larg // taille_carre):
 # petit test j'ai ajouté une matrice de 0 de meme
 # taille que la matrice de carré pour
 # pouvoir reconnaitre les couleur des carrés
-k = 30
-u = 30
-direction = "e"
-pauses = True
-couleur[k][u] = 0
+
+couleur[k][u] = 1
 
 
 def pause():
@@ -45,6 +46,8 @@ def pause():
         pauses = True
     elif pauses is True:
         pauses = False
+
+    deplacement()
 
 
 def deplacement():
@@ -82,20 +85,58 @@ def deplacement():
                 direction = "s"
                 u += 1
 
-    canva.after(1, deplacement)
+    canva.after(50, deplacement)
 
 
-#play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
+def skipe():
+    """avance le programme d'une itération"""
+
+    global pauses
+
+    for i in range(1):
+        pauses = False
+        deplacement()
+    pauses = True
+
+
+def undoo():
+    """retour à l'itération d'avant"""
+
+    return
+
+
+def reset():
+    """fonction qui reset la grille"""
+    global pauses, k, u
+    for i in range(len(cases)):
+        for j in range(len(cases[0])):
+            canva.itemconfig(cases[i][j], fill=color)
+    k, u = 45, 35
+    pauses = True
+
+    return
+
+
+# play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
 
 pausse = tk.Button(window, text="Pause/play", bg="#a3491f",
                    font=("Impact", 14), bd=0,
                    highlightthickness=0, command=pause)
+undo = tk.Button(window, text="Undo", bg="#a3491f",
+                 font=("Impact", 14), bd=0,
+                 highlightthickness=0, command=undoo)
+skip = tk.Button(window, text="Skip", bg="#a3491f",
+                 font=("Impact", 14), bd=0,
+                 highlightthickness=0, command=skipe)
+resset = tk.Button(window, text="Reset", bg="#a3491f",
+                   font=("Impact", 14), bd=0,
+                   highlightthickness=0, command=reset)
 
-
-deplacement()
-
-pausse.grid(row=1, column=0)
-test.grid(row=0, column=0)
-canva.grid(column=1, row=0, rowspan=4)
+resset.grid(row=0, column=1)
+undo.grid(row=3, column=0)
+skip.grid(row=3, column=0, sticky="n")
+pausse.grid(row=2, column=0)
+test.grid(row=1, column=0)
+canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
