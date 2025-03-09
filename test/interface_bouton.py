@@ -3,6 +3,9 @@ import tkinter as tk
 larg, haut = 800, 600
 x = 0
 y = 0
+window = tk.Tk()
+window.title('Fourmi de Langton')
+canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 
 
 def jouer():
@@ -10,13 +13,10 @@ def jouer():
             (programme qui fait avancer fourmis)
             canva.after(500, jouer)"""
 
-    return
-
 
 def pausse():
     """On fait un truc du genre avec un booléen et on met un while dans jouer
        ex : pause = true"""
-
     return
 
 
@@ -31,11 +31,6 @@ def nex():
             il se passe rien(peut être même pas besoin de mettre else)"""
 
     return
-
-
-window = tk.Tk()
-window.title('Fourmi de Langton')
-canva = tk.Canvas(window, bg="white", width=larg, height=haut)
 
 # Mis cette fonction ici pour voir le rendu
 
