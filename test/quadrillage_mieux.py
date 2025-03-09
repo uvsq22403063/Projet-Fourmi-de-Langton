@@ -39,7 +39,7 @@ couleur[k][u] = 0
 
 
 def pause():
-    """met en pause et restart lorsquon appui une deuxiemme fois"""
+    """met en pause et restart lorsqu'on appuis une deuxiemme fois"""
     global pauses
     if pauses is False:
         pauses = True
