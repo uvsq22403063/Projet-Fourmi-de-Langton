@@ -85,7 +85,7 @@ def deplacement():
                 direction = "s"
                 u += 1
 
-    canva.after(50, deplacement)
+        canva.after(100, deplacement)
 
 
 def skipe():
