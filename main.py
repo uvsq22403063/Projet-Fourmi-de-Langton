@@ -9,41 +9,4 @@ canva.grid(rowspan=50, columnspan=50)
 
 fourmis = tk.Label(canva, )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 root.mainloop()
