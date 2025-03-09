@@ -2,7 +2,6 @@ import tkinter as tk
 
 taille_carre = 10
 larg, haut = 800, 600
-colonnes = []
 cases = []
 
 
