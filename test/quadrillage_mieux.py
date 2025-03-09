@@ -77,9 +77,12 @@ def deplacement():
     canva.after(2, deplacement)
 
 
-deplacement()
+bouton = tk.Button(window, text="Play", bg="#a3491f", font=("Impact", 14),
+                   bd=0, highlightthickness=0, command=deplacement)
+
+bouton.grid(row=1, column=0)
 
 
 test.grid(row=0, column=0)
-canva.grid(column=1)
+canva.grid(column=1, row=0, rowspan=3)
 window.mainloop()
