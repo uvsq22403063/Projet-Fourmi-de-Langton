@@ -87,11 +87,12 @@ def deplacement():
     canva.after(2, deplacement)
 
 
-bouton1 = tk.Button(window, text="Play", bg="#a3491f", font=("Impact", 14),
+bouton1 = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
                     bd=0, highlightthickness=0, command=deplacement)
 
-bouton2 = tk.Button(window, text="Pause", bg="#a3491f", font=("Impact", 14),
-                    bd=0, highlightthickness=0, command=pause)
+bouton2 = tk.Button(window, text="Pause/play", bg="#a3491f",
+                    font=("Impact", 14), bd=0,
+                    highlightthickness=0, command=pause)
 
 bouton2.grid(row=2, column=0)
 bouton1.grid(row=1, column=0)
