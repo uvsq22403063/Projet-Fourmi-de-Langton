@@ -60,9 +60,9 @@ pause = tk.Button(window, bg="grey", fg="black", text="PAUSE",
 nexte = tk.Button(window, bg="grey", fg="black", text="NEXT",
                   font=("Impact", 14), command=nex)
 four_plus = tk.Button(window, bg="grey", fg="black", text="+",
-                      font=("Impact", 14), command=nexte)
+                      font=("Arial", 14), command=nexte)
 four_moins = tk.Button(window, bg="grey", fg="black", text="-",
-                       font=("Impact", 14), command=nexte)
+                       font=("Arial", 14), command=nexte)
 fourmis = tk.Label(window, text="Fourmis", font=("Arial", 13), bg='grey')
 
 play.grid(row=3, column=4)
