@@ -51,40 +51,38 @@ def deplacement():
     """le programme du mouvement est 100% opérationel"""
     global k, u, direction
     if pauses is False:
-        if k and u >= 0:
-            if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill="#a8681d")
-                couleur[k][u] = 1
-                if direction == "s":
-                    direction = "w"
-                    k -= 1
-                elif direction == "w":
-                    direction = "n"
-                    u -= 1
-                elif direction == "n":
-                    direction = "e"
-                    k += 1
-                elif direction == "e":
-                    direction = "s"
-                    u += 1
-            elif couleur[k][u] == 1:
-                canva.itemconfig(cases[k][u], fill="#0d5a57")
-                couleur[k][u] = 0
-                if direction == "s":
-                    direction = "e"
-                    k += 1
-                elif direction == "e":
-                    direction = "n"
-                    u -= 1
-                elif direction == "n":
-                    direction = "w"
-                    k -= 1
-                elif direction == "w":
-                    direction = "s"
-                    u += 1
-        else:
-            return
-    canva.after(2, deplacement)
+        if couleur[k][u] == 0:
+            canva.itemconfig(cases[k][u], fill="#a8681d")
+            couleur[k][u] = 1
+            if direction == "s":
+                direction = "w"
+                k -= 1
+            elif direction == "w":
+                direction = "n"
+                u -= 1
+            elif direction == "n":
+                direction = "e"
+                k += 1
+            elif direction == "e":
+                direction = "s"
+                u += 1
+        elif couleur[k][u] == 1:
+            canva.itemconfig(cases[k][u], fill="#0d5a57")
+            couleur[k][u] = 0
+            if direction == "s":
+                direction = "e"
+                k += 1
+            elif direction == "e":
+                direction = "n"
+                u -= 1
+            elif direction == "n":
+                direction = "w"
+                k -= 1
+            elif direction == "w":
+                direction = "s"
+                u += 1
+
+    canva.after(1, deplacement)
 
 
 play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
