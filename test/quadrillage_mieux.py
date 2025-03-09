@@ -32,13 +32,50 @@ canva.itemconfig(cases[1][1], fill="white")
 
 # petit test j'ai ajouté une matrice de 0 de meme taille que la matrice de carré pour
 # pouvoir reconnaitre les couleur des carrés
-couleur[1][1] = 0
-if couleur[1][1] == 0:
-    canva.itemconfig(cases[1][1], fill="black")
-    couleur[1][1] = 1
-else:
-    canva.itemconfig(cases[1][1], fill="white")
-    couleur[1][1] = 0
+k = 50
+u = 50
+direction = "s"
+
+couleur[k][u] = 0
+def deplacement():
+    global k, u, direction
+    if couleur[k][u] == 0:
+        canva.itemconfig(cases[k][u], fill="black")
+        couleur[k][u] = 1
+        if direction == "s":
+            direction = "w"
+            k -= 1
+        elif direction == "w":
+            direction = "n"
+            u -= 1
+        elif direction == "n":
+            direction = "e"
+            k += 1
+        elif direction == "e":
+            direction = "s"
+            u += 1
+    elif couleur[k][u] == 1:
+        canva.itemconfig(cases[k][u], fill="white")
+        couleur[1][1] = 0
+        if direction == "s":
+            direction = "e"
+            k += 1
+        elif direction == "e":
+            direction = "n"
+            u -= 1
+        elif direction == "n":
+            direction = "w"
+            k -= 1
+        elif direction == "w":
+            direction = "s"
+            u += 1
+    canva.after(20, deplacement)
+
+deplacement()
+
+
+
+
 print(couleur)
 
 
