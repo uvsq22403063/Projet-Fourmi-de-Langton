@@ -1,6 +1,6 @@
 import tkinter as tk
 
-color = "#0d5a57"
+color = "#f7f7f7"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
@@ -11,10 +11,10 @@ cases = []
 couleur = []
 
 window = tk.Tk()
-window.config(bg="#102531")
+window.config(bg="lightgrey")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
-vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="#a3491f", width=15)
+vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="grey", width=15)
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
@@ -71,7 +71,7 @@ def deplacement():
                 direction = "s"
                 u += 1
         elif couleur[k][u] == 1:
-            canva.itemconfig(cases[k][u], fill="#0d5a57")
+            canva.itemconfig(cases[k][u], fill=color)
             couleur[k][u] = 0
             if direction == "s":
                 direction = "e"
@@ -134,24 +134,24 @@ def moins():
     vitesse.config(text=f"Clock Speed: {speed}ms")
 
 
-# play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
+# play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
 
-pausse = tk.Button(window, text="Pause/play", bg="#a3491f",
-                   font=("Impact", 14), bd=0,
+pausse = tk.Button(window, text="Pause/play", bg="grey",
+                   fg="#383838", font=("Impact", 14), bd=0,
                    highlightthickness=0, command=pause)
-undo = tk.Button(window, text="Undo", bg="#a3491f",
-                 font=("Impact", 14), bd=0,
+undo = tk.Button(window, text="Undo", bg="grey",
+                 fg="#383838", font=("Impact", 14), bd=0,
                  highlightthickness=0, command=undoo)
-skip = tk.Button(window, text="Skip", bg="#a3491f",
-                 font=("Impact", 14), bd=0,
+skip = tk.Button(window, text="Skip", bg="grey",
+                 fg="#383838", font=("Impact", 14), bd=0,
                  highlightthickness=0, command=skipe)
-resset = tk.Button(window, text="Reset", bg="#a3491f",
-                   font=("Impact", 14), bd=0,
+resset = tk.Button(window, text="Reset", bg="grey",
+                   fg="#383838", font=("Impact", 14), bd=0,
                    highlightthickness=0, command=reset)
-vit_plus = tk.Button(window, bg="#a3491f", fg="black", text="+",
+vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
                      font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="#a3491f", fg="black", text="-",
+vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
                       font=("Arial", 14), width=1, height=1, command=moins)
 
 
