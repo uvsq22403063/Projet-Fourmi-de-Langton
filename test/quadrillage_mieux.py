@@ -11,6 +11,7 @@ pauses = True
 cases = []
 couleur = []
 
+
 window = tk.Tk()
 window.config(bg="lightgrey")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
@@ -113,8 +114,50 @@ def skipe():
 
 def undoo():
     """retour à l'itération d'avant"""
-
-    return
+    global k, u, direction, itération
+    if pauses is True and itération >= 1:
+        if direction == "n":
+            u += 1
+            if couleur[k][u] == 0:
+                canva.itemconfig(cases[k][u], fill="#a8681d")
+                couleur[k][u] = 1
+                direction = "e"
+            elif couleur[k][u] == 1:
+                canva.itemconfig(cases[k][u], fill=color)
+                couleur[k][u] = 0
+                direction = "w"
+        elif direction == "w":
+            k += 1
+            if couleur[k][u] == 0:
+                canva.itemconfig(cases[k][u], fill="#a8681d")
+                couleur[k][u] = 1
+                direction = "n"
+            elif couleur[k][u] == 1:
+                canva.itemconfig(cases[k][u], fill=color)
+                couleur[k][u] = 0
+                direction = "s"
+        elif direction == "e":
+            k -= 1
+            if couleur[k][u] == 0:
+                canva.itemconfig(cases[k][u], fill="#a8681d")
+                couleur[k][u] = 1
+                direction = "s"
+            elif couleur[k][u] == 1:
+                canva.itemconfig(cases[k][u], fill=color)
+                couleur[k][u] = 0
+                direction = "n"
+        elif direction == "s":
+            u -= 1
+            if couleur[k][u] == 0:
+                canva.itemconfig(cases[k][u], fill="#a8681d")
+                couleur[k][u] = 1
+                direction = "w"
+            elif couleur[k][u] == 1:
+                canva.itemconfig(cases[k][u], fill=color)
+                couleur[k][u] = 0
+                direction = "e"
+        itération -= 1
+        nmb.config(text=f"Itération: {itération}")
 
 
 def reset():
