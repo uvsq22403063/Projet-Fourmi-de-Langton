@@ -22,9 +22,6 @@ def deplacement():
     """ permet de deplacer la fourmie """
     if  couleur =='white ':
      
-     
-
-        
 
 
 def quadrillage():
