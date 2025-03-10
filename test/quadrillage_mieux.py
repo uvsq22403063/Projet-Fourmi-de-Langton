@@ -33,9 +33,24 @@ for i in range(larg // taille_carre):
     cases.append(colonnes)
     couleur.append(colonnes_couleur)
 
-
 # Liste permettant de vérifier la couleur de la case.
 couleur[k][u] = 0
+
+
+def fleche(dir):
+    global k, u
+    if dir == "w":
+        coor = (k * 10 + 2, u * 10 + 5, k * 10 + 8, u * 10 + 2, k * 10 + 6, u * 10 + 5, k * 10 + 8, u * 10 + 8)
+    elif dir == "e":
+        coor = (k * 10 + 8, u * 10 + 5, k * 10 + 2, u * 10 + 2, k * 10 + 4, u * 10 + 5, k * 10 + 2, u * 10 + 8)
+    elif dir == "n":
+        coor = (k * 10 + 5, u * 10 + 2, k * 10 + 2, u * 10 + 8, k * 10 + 5, u * 10 + 6, k * 10 + 8, u * 10 + 8)
+    elif dir == "s":
+        coor = (k * 10 + 5, u * 10 + 8, k * 10 + 2, u * 10 + 2, k * 10 + 5, u * 10 + 4, k * 10 + 8, u * 10 + 2)
+    return coor
+
+
+fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
 
 
 def pause():
@@ -63,11 +78,12 @@ def pause_reverse():
 
 def deplacement():
     """Le programme du mouvement est 100% opérationel"""
-    global k, u, direction, itération
+    global k, u, direction, itération, fourmi
     if pauses is False:
         if couleur[k][u] == 0:
             canva.itemconfig(cases[k][u], fill="#a8681d")
             couleur[k][u] = 1
+            canva.delete(fourmi)
             if direction == "s":
                 direction = "w"
                 k -= 1
@@ -80,9 +96,11 @@ def deplacement():
             elif direction == "e":
                 direction = "s"
                 u += 1
+            fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
         elif couleur[k][u] == 1:
             canva.itemconfig(cases[k][u], fill=color)
             couleur[k][u] = 0
+            canva.delete(fourmi)
             if direction == "s":
                 direction = "e"
                 k += 1
@@ -95,6 +113,7 @@ def deplacement():
             elif direction == "w":
                 direction = "s"
                 u += 1
+            fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
         if u > haut // taille_carre - 1:
             u = 0
         elif k > larg // taille_carre - 1:
@@ -110,7 +129,7 @@ def deplacement():
 
 def reversse():
     """Fonction reverse"""
-    global k, u, direction, itération
+    global k, u, direction, itération, fourmi
     if pauses is False and itération >= 1:
         if direction == "n":
             u += 1
@@ -192,7 +211,7 @@ def reset():
     return
 
 
-def plus():
+def moins():
     """Réduit la vitesse de la fourmi"""
 
     global speed, itération
@@ -204,7 +223,7 @@ def plus():
     nmb.config(text=f"Itération: {itération}")
 
 
-def moins():
+def plus():
     """Augmente la vitesse de la fourmi"""
     global speed, itération
     speed += 1
