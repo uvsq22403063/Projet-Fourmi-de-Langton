@@ -121,7 +121,10 @@ def reset():
 def plus():
 
     global speed
-    speed -= 1
+    if speed >= 2:
+        speed -= 1
+    else:
+        speed == speed
     vitesse.config(text=f"Clock Speed: {speed}ms")
 
 
