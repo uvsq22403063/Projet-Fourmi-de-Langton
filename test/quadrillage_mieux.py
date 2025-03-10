@@ -4,6 +4,7 @@ color = "#0d5a57"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
+speed = 50
 direction = "w"
 pauses = True
 cases = []
@@ -13,7 +14,7 @@ window = tk.Tk()
 window.config(bg="#102531")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
-test = tk.Label(text="Me voici", bg="#a3491f")
+vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="#a3491f")
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
@@ -85,7 +86,7 @@ def deplacement():
                 direction = "s"
                 u += 1
 
-        canva.after(100, deplacement)
+        canva.after(speed, deplacement)
 
 
 def skipe():
@@ -107,14 +108,28 @@ def undoo():
 
 def reset():
     """fonction qui reset la grille"""
-    global pauses, k, u
+    global pauses, k, u, speed
     for i in range(len(cases)):
         for j in range(len(cases[0])):
             canva.itemconfig(cases[i][j], fill=color)
     k, u = 45, 35
+    speed = 50
     pauses = True
 
     return
+
+
+def plus():
+
+    global speed
+    speed -= 1
+    vitesse.config(text=f"Clock Speed: {speed}ms")
+
+
+def moins():
+    global speed
+    speed += 1
+    vitesse.config(text=f"Clock Speed: {speed}ms")
 
 
 # play = tk.Button(window, text="Start", bg="#a3491f", font=("Impact", 14),
@@ -132,11 +147,18 @@ skip = tk.Button(window, text="Skip", bg="#a3491f",
 resset = tk.Button(window, text="Reset", bg="#a3491f",
                    font=("Impact", 14), bd=0,
                    highlightthickness=0, command=reset)
+vit_plus = tk.Button(window, bg="#a3491f", fg="black", text="+",
+                     font=("Arial", 14), command=plus)
+vit_moins = tk.Button(window, bg="#a3491f", fg="black", text="-",
+                      font=("Arial", 14), command=moins)
+
 
 resset.grid(row=0, column=1)
 undo.grid(row=3, column=0)
 skip.grid(row=3, column=0, sticky="n")
 pausse.grid(row=2, column=0)
-test.grid(row=1, column=0)
+vit_moins.grid(row=1, column=0, sticky="sw", padx=20)
+vit_plus.grid(row=1, column=0, sticky="s", padx=10)
+vitesse.grid(row=1, column=0, sticky="s", pady=50)
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
