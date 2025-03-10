@@ -87,7 +87,14 @@ def deplacement():
             elif direction == "w":
                 direction = "s"
                 u += 1
-
+        if u > 70:
+            u = 0
+        elif k > 90:
+            k = 0
+        elif u < 0:
+            u = 70
+        elif k < 0:
+            k = 90
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
