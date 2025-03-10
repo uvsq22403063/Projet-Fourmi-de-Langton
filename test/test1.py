@@ -19,7 +19,7 @@ fourmie = (0, 0)
 black = (0, 0, 0)
 withe = (255, 255, 255)
 couleur = [black, withe]
-mon_canvas = tk.Canvas(racine, bg="black", width=canvas_width, height=canvas_height)
+mon_canvas = tk.Canvas(racine, bg="black", width=larg, height=haut)
 mon_canvas.pack()
 D = {"haut": False, "bas": False, "gauche": False, "droite": False}
 
