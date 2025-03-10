@@ -5,6 +5,7 @@ taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
 speed = 50
+itération = 0
 direction = "w"
 pauses = True
 cases = []
@@ -15,6 +16,7 @@ window.config(bg="lightgrey")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
 vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="grey", width=15)
+nmb = tk.Label(text=f"Itération: {itération}", bg="grey", width=15)
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
@@ -37,7 +39,7 @@ for i in range(larg // taille_carre):
 # taille que la matrice de carré pour
 # pouvoir reconnaitre les couleur des carrés
 
-couleur[k][u] = 1
+couleur[k][u] = 0
 
 
 def pause():
@@ -53,7 +55,7 @@ def pause():
 
 def deplacement():
     """le programme du mouvement est 100% opérationel"""
-    global k, u, direction
+    global k, u, direction, itération
     if pauses is False:
         if couleur[k][u] == 0:
             canva.itemconfig(cases[k][u], fill="#a8681d")
@@ -85,8 +87,17 @@ def deplacement():
             elif direction == "w":
                 direction = "s"
                 u += 1
-
+        if u > 70:
+            u = 0
+        elif k > 90:
+            k = 0
+        elif u < 0:
+            u = 70
+        elif k < 0:
+            k = 90
         canva.after(speed, deplacement)
+        itération += 1
+        nmb.config(text=f"Itération: {itération}")
 
 
 def skipe():
@@ -108,30 +119,37 @@ def undoo():
 
 def reset():
     """fonction qui reset la grille"""
-    global pauses, k, u
+    global pauses, k, u, itération
     for i in range(len(cases)):
         for j in range(len(cases[0])):
             canva.itemconfig(cases[i][j], fill=color)
+            couleur[i][j] = 0
     k, u = 45, 35
     pauses = True
+    itération = 0
+    nmb.config(text=f"Itération: {itération}")
 
     return
 
 
 def plus():
+    """réduit la vitesse de la fourmi"""
 
-    global speed
+    global speed, itération
     if speed >= 2:
         speed -= 1
     else:
         speed == speed
     vitesse.config(text=f"Clock Speed: {speed}ms")
+    nmb.config(text=f"Itération: {itération}")
 
 
 def moins():
-    global speed
+    """augmente la vitesse de la fourmi"""
+    global speed, itération
     speed += 1
     vitesse.config(text=f"Clock Speed: {speed}ms")
+    nmb.config(text=f"Itération: {itération}")
 
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
@@ -149,9 +167,9 @@ skip = tk.Button(window, text="Skip", bg="grey",
 resset = tk.Button(window, text="Reset", bg="grey",
                    fg="#383838", font=("Impact", 14), bd=0,
                    highlightthickness=0, command=reset)
-vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
+vit_plus = tk.Button(window, bg="grey", fg="#383838", text="-",
                      font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
+vit_moins = tk.Button(window, bg="grey", fg="#383838", text="+",
                       font=("Arial", 14), width=1, height=1, command=moins)
 
 
@@ -161,6 +179,7 @@ skip.grid(row=3, column=0, sticky="n")
 pausse.grid(row=2, column=0)
 vit_moins.grid(row=1, column=0, sticky="sw", padx=30)
 vit_plus.grid(row=1, column=0, sticky="s", padx=0)
-vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
+vitesse.grid(row=1, column=0, sticky="s", pady=70, padx=10)
+nmb.grid(row=1, column=0, sticky="s", pady=50, padx=10)
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
