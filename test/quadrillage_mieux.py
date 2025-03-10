@@ -71,7 +71,7 @@ def pause():
 
 
 def pause_reverse():
-    """Met en pause et restart le reverse"""
+    """Met en pause et restart la fonction reverse"""
     global pauses
 
     if pauses is True:
@@ -83,7 +83,7 @@ def pause_reverse():
 
 
 def deplacement():
-    """Le programme du mouvement est 100% opérationel"""
+    """Programme le mouvement de la fourmi"""
     global k, u, direction, itération, fourmi
     if pauses is False:
         canva.delete(fourmi)
@@ -132,7 +132,7 @@ def deplacement():
 
 
 def reversse():
-    """Fonction reverse"""
+    """Retourne aux étapes précédentes"""
     global k, u, direction, itération, fourmi
     if pauses is False and itération >= 1:
         canva.delete(fourmi)
@@ -194,7 +194,7 @@ def skipe():
 
 
 def undoo():
-    """Retour à l'itération d'avant"""
+    """Retourne à l'itération précédente"""
     global pauses
     for i in range(1):
         pauses = False
@@ -203,7 +203,7 @@ def undoo():
 
 
 def reset():
-    """Fonction qui reset la grille"""
+    """Fonction qui reconfigure la grille, dans la situation initiale"""
     global pauses, k, u, direction, itération, fourmi
     canva.delete(fourmi)
     for i in range(len(cases)):
@@ -250,7 +250,7 @@ resset = tk.Button(window, text="Reset", bg="grey",
                    highlightthickness=0, command=reset)
 
 # Boutons PLAY/PAUSE et reverse
-pausse = tk.Button(window, text="Pause/play", bg="grey",
+pausse = tk.Button(window, text="Play/pause", bg="grey",
                    fg="#383838", font=("Impact", 14), bd=1,
                    highlightthickness=0, command=pause)
 reverse = tk.Button(window, text="Reverse", bg="grey",
@@ -268,14 +268,13 @@ undo = tk.Button(window, text="Undo", bg="grey",
 # Vitesse de la clock
 vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="grey", width=15)
 nmb = tk.Label(text=f"Itération: {itération}", bg="grey", width=15)
-vit_plus = tk.Button(window, bg="grey", fg="#383838", text="-",
+vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
                      font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="grey", fg="#383838", text="+",
+vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
                       font=("Arial", 14), width=1, height=1, command=moins)
 
 
 # Affichage des labels et boutons ci-dessus
-
 
 resset.grid(row=0, column=1)
 
@@ -287,8 +286,8 @@ reverse.grid(row=3, column=0, sticky="s", pady=36)
 
 vitesse.grid(row=1, column=0, sticky="s", pady=70, padx=10)
 nmb.grid(row=1, column=0, sticky="s", pady=50, padx=10)
-vit_moins.grid(row=1, column=0, sticky="sw", padx=30)
-vit_plus.grid(row=1, column=0, sticky="s", padx=0)
+vit_moins.grid(row=1, column=0, sticky="se", padx=30)
+vit_plus.grid(row=1, column=0, sticky="sw", padx=0)
 
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
