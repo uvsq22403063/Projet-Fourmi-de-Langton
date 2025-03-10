@@ -37,7 +37,7 @@ for i in range(larg // taille_carre):
 # taille que la matrice de carré pour
 # pouvoir reconnaitre les couleur des carrés
 
-couleur[k][u] = 1
+couleur[k][u] = 0
 
 
 def pause():
