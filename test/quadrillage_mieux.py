@@ -126,6 +126,7 @@ def reset():
 
 
 def plus():
+    """réduit la vitesse de la fourmi"""
 
     global speed, itération
     if speed >= 2:
@@ -137,6 +138,7 @@ def plus():
 
 
 def moins():
+    """augmente la vitesse de la fourmi"""
     global speed, itération
     speed += 1
     vitesse.config(text=f"Clock Speed: {speed}ms")
