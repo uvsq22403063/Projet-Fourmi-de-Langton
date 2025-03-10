@@ -14,7 +14,7 @@ window = tk.Tk()
 window.config(bg="lightgrey")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
-vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="grey", width=15)
+vitesse = tk.Label(text=f"Clock Speed : {speed}ms", bg="grey", width=15)
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
@@ -37,7 +37,7 @@ for i in range(larg // taille_carre):
 # taille que la matrice de carré pour
 # pouvoir reconnaitre les couleur des carrés
 
-couleur[k][u] = 1
+couleur[k][u] = 0
 
 
 def pause():
@@ -150,9 +150,9 @@ skip = tk.Button(window, text="Skip", bg="grey",
 resset = tk.Button(window, text="Reset", bg="grey",
                    fg="#383838", font=("Impact", 14), bd=0,
                    highlightthickness=0, command=reset)
-vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
+vit_plus = tk.Button(window, bg="grey", fg="#383838", text="-",
                      font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
+vit_moins = tk.Button(window, bg="grey", fg="#383838", text="+",
                       font=("Arial", 14), width=1, height=1, command=moins)
 
 
