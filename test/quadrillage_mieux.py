@@ -112,6 +112,7 @@ def reset():
     for i in range(len(cases)):
         for j in range(len(cases[0])):
             canva.itemconfig(cases[i][j], fill=color)
+            couleur[i][j] = 0
     k, u = 45, 35
     pauses = True
 
