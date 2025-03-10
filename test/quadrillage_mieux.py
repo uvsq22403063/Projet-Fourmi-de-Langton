@@ -149,9 +149,9 @@ skip = tk.Button(window, text="Skip", bg="grey",
 resset = tk.Button(window, text="Reset", bg="grey",
                    fg="#383838", font=("Impact", 14), bd=0,
                    highlightthickness=0, command=reset)
-vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
+vit_plus = tk.Button(window, bg="grey", fg="#383838", text="-",
                      font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
+vit_moins = tk.Button(window, bg="grey", fg="#383838", text="+",
                       font=("Arial", 14), width=1, height=1, command=moins)
 
 
