@@ -11,6 +11,20 @@ L = 10
 couleur = 'white'
 
 
+D = {"haut" : False, "bas" : False, "gauche" : False, "droite" : False }
+if couleur == "black":
+    D["gauche"] = True
+else:
+    D["droite"] = True
+
+L = [ haut , bas , gauche , droite ]
+def deplacement():
+    """ permet de deplacer la fourmie """
+    if  couleur =='white ':
+
+        
+
+
 def quadrillage():
     """création d'un quadrillage"""
     global larg, haut
