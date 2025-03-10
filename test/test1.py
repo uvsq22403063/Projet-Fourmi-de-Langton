@@ -11,35 +11,31 @@ L = 10
 couleur = 'white'
 
 
-
-
-
-haut = (1,0)
-bas = (-1,0)
-gauche = (10,-10)
-droite = (-10,10)
+haut = (1, 0)
+bas = (-1, 0)
+gauche = (10, -10)
+droite = (-10, 10)
 fourmie = (0, 0)
-black = ( 0, 0, 0)
-withe =(255, 255, 255)
-couleur = [ black , withe]  
-mon_canvas = tk.canvas(racine ,bg = "black" , width = canvas_width  , height = canvas_height)
+black = (0, 0, 0)
+withe = (255, 255, 255)
+couleur = [black, withe]
+mon_canvas = tk.Canvas(racine, bg="black", width=canvas_width, height=canvas_height)
 mon_canvas.pack()
-D = {"haut" : False, "bas" : False, "gauche" : False, "droite" : False }
+D = {"haut": False, "bas": False, "gauche": False, "droite": False}
 
 
 def deplacement():
     """ permet de deplacer la fourmie """
-    global couleur 
-    couleur =  couleur [i % len(couleur) ]
-    
+    global couleur
+    couleur = couleur[i % len(couleur)]
+
+
 if couleur == "black":
     D["gauche"] = True
     mon_canvas.move(fourmie,  -10, 10)
 else:
     D["droite"] = True
 mon_canvas.move(fourmie,  10, -10)
-
-
 
 
 def quadrillage():
