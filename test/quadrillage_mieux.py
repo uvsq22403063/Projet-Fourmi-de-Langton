@@ -228,7 +228,7 @@ def moins():
         speed -= 1
     else:
         speed == speed
-    vitesse.config(text=f"Clock Speed: {speed}ms")
+    vitesse.config(text=f"Tps/itération: {speed}ms")
     nmb.config(text=f"Itération: {itération}")
 
 
@@ -236,7 +236,7 @@ def plus():
     """Augmente la vitesse de la fourmi"""
     global speed, itération
     speed += 1
-    vitesse.config(text=f"Clock Speed: {speed}ms")
+    vitesse.config(text=f"Tps/itération: {speed}ms")
     nmb.config(text=f"Itération: {itération}")
 
 
@@ -266,7 +266,7 @@ undo = tk.Button(window, text="Undo", bg="grey",
                  highlightthickness=0, width=7, command=undoo)
 
 # Vitesse de la clock
-vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="grey", width=15)
+vitesse = tk.Label(text=f"Tps/itération: {speed}ms", bg="grey", width=15)
 nmb = tk.Label(text=f"Itération: {itération}", bg="grey", width=15)
 vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
                      font=("Arial", 14), width=1, height=1, command=plus)
@@ -284,8 +284,8 @@ undo.grid(row=3, column=0, sticky="s")
 pausse.grid(row=2, column=0)
 reverse.grid(row=3, column=0, sticky="s", pady=36)
 
-vitesse.grid(row=1, column=0, sticky="s", pady=70, padx=10)
-nmb.grid(row=1, column=0, sticky="s", pady=50, padx=10)
+vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
+nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
 vit_moins.grid(row=1, column=0, sticky="se", padx=30)
 vit_plus.grid(row=1, column=0, sticky="sw", padx=0)
 
