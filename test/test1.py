@@ -12,13 +12,13 @@ couleur = 'white'
 
 
 
-
-
-haut = (1,0)
-bas = (-1,0)
+canvas_width = 200
+canvas_height= 200
+haut= (0,-10)
+bas = (0,10)
 gauche = (10,-10)
 droite = (-10,10)
-fourmie = (0, 0)
+fourmie = None 
 black = ( 0, 0, 0)
 withe =(255, 255, 255)
 couleur = [ black , withe]  
@@ -26,19 +26,19 @@ mon_canvas = tk.canvas(racine ,bg = "black" , width = canvas_width  , height = c
 mon_canvas.pack()
 D = {"haut" : False, "bas" : False, "gauche" : False, "droite" : False }
 
-
+i = 0
 def deplacement():
     """ permet de deplacer la fourmie """
     global couleur 
-    couleur =  couleur [i % len(couleur) ]
+    recup_couleur =  couleur [i % len(couleur) ]
     
 if couleur == "black":
     D["gauche"] = True
-    mon_canvas.move(fourmie,  -10, 10)
+    mon_canvas.move(fourmie, gauche )
 else:
     D["droite"] = True
-mon_canvas.move(fourmie,  10, -10)
-
+mon_canvas.move(fourmie, droite)
+deplacement()
 
 
 
