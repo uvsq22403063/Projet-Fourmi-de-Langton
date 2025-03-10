@@ -14,7 +14,7 @@ window = tk.Tk()
 window.config(bg="lightgrey")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
-vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="grey", width=15)
+vitesse = tk.Label(text=f"Clock Speed : {speed}ms", bg="grey", width=15)
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
