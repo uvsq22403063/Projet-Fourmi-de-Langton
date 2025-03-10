@@ -14,7 +14,7 @@ window = tk.Tk()
 window.config(bg="#102531")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
-vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="#a3491f")
+vitesse = tk.Label(text=f"Clock Speed: {speed}ms", bg="#a3491f", width=15)
 
 # création du quadrillage avec un répertoire pour les cases. (liste cases)
 for i in range(larg // taille_carre):
@@ -108,12 +108,11 @@ def undoo():
 
 def reset():
     """fonction qui reset la grille"""
-    global pauses, k, u, speed
+    global pauses, k, u
     for i in range(len(cases)):
         for j in range(len(cases[0])):
             canva.itemconfig(cases[i][j], fill=color)
     k, u = 45, 35
-    speed = 50
     pauses = True
 
     return
@@ -148,17 +147,17 @@ resset = tk.Button(window, text="Reset", bg="#a3491f",
                    font=("Impact", 14), bd=0,
                    highlightthickness=0, command=reset)
 vit_plus = tk.Button(window, bg="#a3491f", fg="black", text="+",
-                     font=("Arial", 14), command=plus)
+                     font=("Arial", 14), width=1, height=1, command=plus)
 vit_moins = tk.Button(window, bg="#a3491f", fg="black", text="-",
-                      font=("Arial", 14), command=moins)
+                      font=("Arial", 14), width=1, height=1, command=moins)
 
 
 resset.grid(row=0, column=1)
 undo.grid(row=3, column=0)
 skip.grid(row=3, column=0, sticky="n")
 pausse.grid(row=2, column=0)
-vit_moins.grid(row=1, column=0, sticky="sw", padx=20)
-vit_plus.grid(row=1, column=0, sticky="s", padx=10)
-vitesse.grid(row=1, column=0, sticky="s", pady=50)
+vit_moins.grid(row=1, column=0, sticky="sw", padx=30)
+vit_plus.grid(row=1, column=0, sticky="s", padx=0)
+vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
