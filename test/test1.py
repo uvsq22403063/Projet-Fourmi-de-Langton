@@ -21,6 +21,8 @@ L = [ haut , bas , gauche , droite ]
 def deplacement():
     """ permet de deplacer la fourmie """
     if  couleur =='white ':
+     
+     
 
         
 
