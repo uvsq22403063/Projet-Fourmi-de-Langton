@@ -14,6 +14,7 @@ couleur = []
 
 
 window = tk.Tk()
+window.title("La Fourmi de Langton")
 window.config(bg="lightgrey")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
