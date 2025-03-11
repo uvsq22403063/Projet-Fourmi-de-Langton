@@ -1,4 +1,5 @@
 import tkinter as tk
+import json
 
 color1 = "#f7f7f7"
 color2 = "#a8681d"
@@ -252,6 +253,15 @@ def plus():
     nmb.config(text=f"Itération: {itération}")
 
 
+def save():
+
+    return
+
+
+def load():
+
+    return
+
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
 
@@ -300,6 +310,20 @@ vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
 nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
 vit_moins.grid(row=1, column=0, sticky="s", padx=10)
 vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
+
+
+# afficher un menu en haut à gauche de l'écran
+
+menui = tk.Menu(window)
+menu_bar = tk.Menu(menui, tearoff=0)
+
+menu_bar.add_command(label="Save", command=save)
+menu_bar.add_command(label="Load", command=load)
+menu_bar.add_command(label="Quit", command=window.destroy)  # commande
+
+menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
+
+window.config(menu=menui)
 
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
