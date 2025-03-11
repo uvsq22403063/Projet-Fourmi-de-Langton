@@ -16,7 +16,7 @@ couleur = []
 
 window = tk.Tk()
 window.title("La Fourmi de Langton")
-window.config(bg="lightgrey")
+window.config(bg="#0a0a0a")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
 
@@ -268,33 +268,40 @@ def load():
 
 
 # Reset de la grille
-resset = tk.Button(window, text="Reset", bg="grey",
-                   fg="#383838", font=("Impact", 14), bd=1,
-                   highlightthickness=0, command=reset)
+resset = tk.Button(window, text="Reset", bg="#251F33",
+                   fg=color2, font=("Impact", 14), bd=1,
+                   highlightthickness=0, activeforeground="#251F33",
+                   activebackground=color2, command=reset)
 
 # Boutons PLAY/PAUSE et reverse
-pausse = tk.Button(window, text="Play/pause", bg="grey",
-                   fg="#383838", font=("Impact", 14), bd=1,
-                   highlightthickness=0, command=pause)
-reverse = tk.Button(window, text="Reverse", bg="grey",
-                    fg="#383838", font=("Impact", 14), bd=1,
-                    highlightthickness=0, command=pause_reverse)
+pausse = tk.Button(window, text="Play/pause", bg="#251F33",
+                   fg=color2, font=("Impact", 14), bd=1,
+                   highlightthickness=0, activeforeground="#251F33",
+                   activebackground=color2, command=pause)
+reverse = tk.Button(window, text="Reverse", bg="#251F33",
+                    fg=color2, font=("Impact", 14), bd=1,
+                    highlightthickness=0, activeforeground="#251F33",
+                   activebackground=color2, command=pause_reverse)
 
 # Boutons skip et undo
-skip = tk.Button(window, text="Skip", bg="grey",
-                 fg="#383838", font=("Impact", 14), bd=1,
-                 highlightthickness=0, width=7, command=skipe)
-undo = tk.Button(window, text="Undo", bg="grey",
-                 fg="#383838", font=("Impact", 14), bd=1,
-                 highlightthickness=0, width=7, command=undoo)
+skip = tk.Button(window, text="Skip", bg="#251F33",
+                 fg=color2, font=("Impact", 14), bd=1,
+                 highlightthickness=0, activeforeground="#251F33",
+                 activebackground=color2, width=7, command=skipe)
+undo = tk.Button(window, text="Undo", bg="#251F33",
+                 fg=color2, font=("Impact", 14), bd=1,
+                 highlightthickness=0, activeforeground="#251F33",
+                 activebackground=color2, width=7, command=undoo)
 
 # Vitesse de la clock
-vitesse = tk.Label(text=f"Tps/itération: {speed}ms", bg="grey", width=15)
-nmb = tk.Label(text=f"Itération: {itération}", bg="grey", width=15)
-vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
-                     font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
-                      font=("Arial", 14), width=1, height=1, command=moins)
+vitesse = tk.Label(text=f"Tps/itération: {speed}ms", bg="#251F33", fg=color2, width=15)
+nmb = tk.Label(text=f"Itération: {itération}", bg="#251F33", fg=color2, width=15)
+vit_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
+                     font=("Arial", 14), activeforeground="#251F33",
+                     activebackground=color2, width=1, height=1, command=plus)
+vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
+                      font=("Arial", 14), width=1, height=1,activeforeground="#251F33",
+                      activebackground=color2, command=moins)
 
 
 # Affichage des labels et boutons ci-dessus
