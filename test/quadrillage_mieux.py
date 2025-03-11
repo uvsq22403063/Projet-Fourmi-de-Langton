@@ -281,7 +281,7 @@ pausse = tk.Button(window, text="Play/pause", bg="#251F33",
 reverse = tk.Button(window, text="Reverse", bg="#251F33",
                     fg=color2, font=("Impact", 14), bd=1,
                     highlightthickness=0, activeforeground="#251F33",
-                   activebackground=color2, command=pause_reverse)
+                    activebackground=color2, command=pause_reverse)
 
 # Boutons skip et undo
 skip = tk.Button(window, text="Skip", bg="#251F33",
@@ -294,13 +294,17 @@ undo = tk.Button(window, text="Undo", bg="#251F33",
                  activebackground=color2, width=7, command=undoo)
 
 # Vitesse de la clock
-vitesse = tk.Label(text=f"Tps/itération: {speed}ms", bg="#251F33", fg=color2, width=15)
-nmb = tk.Label(text=f"Itération: {itération}", bg="#251F33", fg=color2, width=15)
+vitesse = tk.Label(text=f"Tps/itération: {speed}ms",
+                   bg="#251F33", fg=color2, width=15)
+nmb = tk.Label(text=f"Itération: {itération}",
+               bg="#251F33", fg=color2, width=15)
 vit_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
                      font=("Arial", 14), activeforeground="#251F33",
-                     activebackground=color2, width=1, height=1, command=plus)
+                     activebackground=color2,
+                     width=1, height=1, command=plus)
 vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
-                      font=("Arial", 14), width=1, height=1,activeforeground="#251F33",
+                      font=("Arial", 14), width=1, height=1,
+                      activeforeground="#251F33",
                       activebackground=color2, command=moins)
 
 
