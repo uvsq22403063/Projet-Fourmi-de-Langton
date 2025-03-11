@@ -298,8 +298,8 @@ reverse.grid(row=3, column=0, sticky="s", pady=36)
 
 vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
 nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
-vit_moins.grid(row=1, column=0, sticky="se", padx=30)
-vit_plus.grid(row=1, column=0, sticky="sw", padx=0)
+vit_moins.grid(row=1, column=0, sticky="s", padx=10)
+vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
 
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()
