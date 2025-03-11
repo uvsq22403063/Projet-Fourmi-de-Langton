@@ -78,6 +78,8 @@ def passage_mural():
 def pause():
     """Met en pause et restart lorsqu'on appuis une deuxiemme fois"""
     global pauses
+    if itération == 0:
+        pauses = True
     if pauses is False:
         pauses = True
     elif pauses is True:
@@ -89,7 +91,6 @@ def pause():
 def pause_reverse():
     """Met en pause et restart la fonction reverse"""
     global pauses
-
     if pauses is True:
         pauses = False
     elif pauses is False:
