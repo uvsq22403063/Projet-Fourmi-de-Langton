@@ -139,6 +139,14 @@ def reversse():
         canva.delete(fourmi)
         if direction == "n":
             u += 1
+            if u > haut // taille_carre - 1:
+                u = 0
+            elif k > larg // taille_carre - 1:
+                k = 0
+            elif u < 0:
+                u = haut // taille_carre - 1
+            elif k < 0:
+                k = larg // taille_carre - 1
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
@@ -149,6 +157,14 @@ def reversse():
                 direction = "w"
         elif direction == "w":
             k += 1
+            if u > haut // taille_carre - 1:
+                u = 0
+            elif k > larg // taille_carre - 1:
+                k = 0
+            elif u < 0:
+                u = haut // taille_carre - 1
+            elif k < 0:
+                k = larg // taille_carre - 1
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
@@ -159,6 +175,14 @@ def reversse():
                 direction = "s"
         elif direction == "e":
             k -= 1
+            if u > haut // taille_carre - 1:
+                u = 0
+            elif k > larg // taille_carre - 1:
+                k = 0
+            elif u < 0:
+                u = haut // taille_carre - 1
+            elif k < 0:
+                k = larg // taille_carre - 1
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
@@ -169,6 +193,14 @@ def reversse():
                 direction = "n"
         elif direction == "s":
             u -= 1
+            if u > haut // taille_carre - 1:
+                u = 0
+            elif k > larg // taille_carre - 1:
+                k = 0
+            elif u < 0:
+                u = haut // taille_carre - 1
+            elif k < 0:
+                k = larg // taille_carre - 1
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
