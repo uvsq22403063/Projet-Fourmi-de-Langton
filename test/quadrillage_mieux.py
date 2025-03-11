@@ -1,8 +1,8 @@
 import tkinter as tk
 import json
 
-color1 = "#f7f7f7"
-color2 = "#a8681d"
+color1 = "black"
+color2 = "#ff1b2d"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
@@ -29,7 +29,7 @@ for i in range(larg // taille_carre):
         y0 = j * 10
         x1 = (i+1) * 10
         y1 = (j+1) * 10
-        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#2ed3cd",
+        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#251F33",
                                        fill=color1, width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
@@ -58,7 +58,7 @@ def fleche(dir):
     return coor
 
 
-fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
 
 
 def passage_mural():
@@ -135,7 +135,7 @@ def deplacement():
                 direction = "s"
                 u += 1
         passage_mural()
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+        fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
@@ -190,7 +190,7 @@ def reversse():
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction = "e"
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+        fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
         canva.after(speed, reversse)
         itération -= 1
         nmb.config(text=f"Itération: {itération}")
@@ -229,7 +229,7 @@ def reset():
     itération = 0
     direction = "n"
     nmb.config(text=f"Itération: {itération}")
-    fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+    fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
 
     return
 
