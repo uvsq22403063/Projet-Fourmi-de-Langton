@@ -39,6 +39,11 @@ for i in range(larg // taille_carre):
 # Liste permettant de vérifier la couleur de la case.
 couleur[k][u] = 0
 
+etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+                "couleur_cases2": couleur[k][u], "coord_x": k, "coord_y": u,
+                "itérations": itération, "direction": direction,
+                "vitesse": speed}
+
 
 def fleche(dir):
     """Oriente la fourmi selon la direction souhaitée"""
@@ -256,14 +261,32 @@ def plus():
     nmb.config(text=f"Itération: {itération}")
 
 
-def save():
+def sauvegarde():
+    """permet de sauvegarder la grille """
+    global pauses, etat_fourmis
+    pauses = True
+    etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+                    "couleur_cases2": couleur[k][u], "coord_x": k,
+                    "coord_y": u, "itérations": itération,
+                    "direction": direction, "vitesse": speed}
 
-    return
+    fichier = open('donnee_grille.json', 'w')
+
+    json.dump(etat_fourmis, fichier, indent=4)
+    print("sauvegarde de la grille ")
+    fichier.close()
 
 
-def load():
+def charger():
+    """permet de recharger la grille """
+    global etat_fourmis
 
-    return
+    fichier = open('donnee_grille.json', 'r')
+    données = fichier.read()
+    etat_fourmis = json.load(données)
+    fichier.close()
+
+    print("chargement de la grille")
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
@@ -331,8 +354,8 @@ vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
 menui = tk.Menu(window)
 menu_bar = tk.Menu(menui, tearoff=0)
 
-menu_bar.add_command(label="Save", command=save)
-menu_bar.add_command(label="Load", command=load)
+menu_bar.add_command(label="Save", command=sauvegarde)
+menu_bar.add_command(label="Load", command=charger)
 menu_bar.add_command(label="Quit", command=window.destroy)  # commande
 
 menui.add_cascade(label="File", menu=menu_bar)  # nom du menu

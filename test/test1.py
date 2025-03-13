@@ -326,11 +326,18 @@ vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
 
 def sauvegarde():
     """permet de sauvegarder la grille """
+    global pauses, etat_fourmis
+    pauses = True
+    etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+                    "couleur_cases2": couleur[k][u], "coord_x": k,
+                    "coord_y": u, "itérations": itération,
+                    "direction": direction, "vitesse": speed}
 
-    etat_de_case = {"couleurs": couleur}
-    with open('donnee.json', 'w') as fichier:
-        etat_json = json.dump(etat_de_case, fichier)
+    fichier = open('donnee_grille.json', 'w')
+
+    json.dump(etat_fourmis, fichier, indent=4)
     print("sauvegarde de la grille ")
+    fichier.close()
 
 
 def recharge_grille():
