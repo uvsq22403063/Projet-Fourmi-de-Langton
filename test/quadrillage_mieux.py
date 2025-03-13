@@ -1,7 +1,8 @@
 import tkinter as tk
+import json
 
-color1 = "#f7f7f7"
-color2 = "#a8681d"
+color1 = "black"
+color2 = "#ff1b2d"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
@@ -15,7 +16,7 @@ couleur = []
 
 window = tk.Tk()
 window.title("La Fourmi de Langton")
-window.config(bg="lightgrey")
+window.config(bg="#0a0a0a")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
 
@@ -28,7 +29,7 @@ for i in range(larg // taille_carre):
         y0 = j * 10
         x1 = (i+1) * 10
         y1 = (j+1) * 10
-        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#2ed3cd",
+        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#251F33",
                                        fill=color1, width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
@@ -57,7 +58,7 @@ def fleche(dir):
     return coor
 
 
-fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
 
 
 def passage_mural():
@@ -77,6 +78,8 @@ def passage_mural():
 def pause():
     """Met en pause et restart lorsqu'on appuis une deuxiemme fois"""
     global pauses
+    if itération == 0:
+        pauses = True
     if pauses is False:
         pauses = True
     elif pauses is True:
@@ -88,7 +91,6 @@ def pause():
 def pause_reverse():
     """Met en pause et restart la fonction reverse"""
     global pauses
-
     if pauses is True:
         pauses = False
     elif pauses is False:
@@ -133,7 +135,7 @@ def deplacement():
                 direction = "s"
                 u += 1
         passage_mural()
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+        fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
@@ -188,7 +190,7 @@ def reversse():
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction = "e"
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+        fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
         canva.after(speed, reversse)
         itération -= 1
         nmb.config(text=f"Itération: {itération}")
@@ -227,7 +229,7 @@ def reset():
     itération = 0
     direction = "n"
     nmb.config(text=f"Itération: {itération}")
-    fourmi = canva.create_polygon(fleche(direction), width=0, fill="red")
+    fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
 
     return
 
@@ -252,38 +254,58 @@ def plus():
     nmb.config(text=f"Itération: {itération}")
 
 
+def save():
+
+    return
+
+
+def load():
+
+    return
+
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
 
 
 # Reset de la grille
-resset = tk.Button(window, text="Reset", bg="grey",
-                   fg="#383838", font=("Impact", 14), bd=1,
-                   highlightthickness=0, command=reset)
+resset = tk.Button(window, text="Reset", bg="#251F33",
+                   fg=color2, font=("Impact", 14), bd=1,
+                   highlightthickness=0, activeforeground="#251F33",
+                   activebackground=color2, command=reset)
 
 # Boutons PLAY/PAUSE et reverse
-pausse = tk.Button(window, text="Play/pause", bg="grey",
-                   fg="#383838", font=("Impact", 14), bd=1,
-                   highlightthickness=0, command=pause)
-reverse = tk.Button(window, text="Reverse", bg="grey",
-                    fg="#383838", font=("Impact", 14), bd=1,
-                    highlightthickness=0, command=pause_reverse)
+pausse = tk.Button(window, text="Play/pause", bg="#251F33",
+                   fg=color2, font=("Impact", 14), bd=1,
+                   highlightthickness=0, activeforeground="#251F33",
+                   activebackground=color2, command=pause)
+reverse = tk.Button(window, text="Reverse", bg="#251F33",
+                    fg=color2, font=("Impact", 14), bd=1,
+                    highlightthickness=0, activeforeground="#251F33",
+                    activebackground=color2, command=pause_reverse)
 
 # Boutons skip et undo
-skip = tk.Button(window, text="Skip", bg="grey",
-                 fg="#383838", font=("Impact", 14), bd=1,
-                 highlightthickness=0, width=7, command=skipe)
-undo = tk.Button(window, text="Undo", bg="grey",
-                 fg="#383838", font=("Impact", 14), bd=1,
-                 highlightthickness=0, width=7, command=undoo)
+skip = tk.Button(window, text="Skip", bg="#251F33",
+                 fg=color2, font=("Impact", 14), bd=1,
+                 highlightthickness=0, activeforeground="#251F33",
+                 activebackground=color2, width=7, command=skipe)
+undo = tk.Button(window, text="Undo", bg="#251F33",
+                 fg=color2, font=("Impact", 14), bd=1,
+                 highlightthickness=0, activeforeground="#251F33",
+                 activebackground=color2, width=7, command=undoo)
 
 # Vitesse de la clock
-vitesse = tk.Label(text=f"Tps/itération: {speed}ms", bg="grey", width=15)
-nmb = tk.Label(text=f"Itération: {itération}", bg="grey", width=15)
-vit_plus = tk.Button(window, bg="grey", fg="#383838", text="+",
-                     font=("Arial", 14), width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="grey", fg="#383838", text="-",
-                      font=("Arial", 14), width=1, height=1, command=moins)
+vitesse = tk.Label(text=f"Tps/itération: {speed}ms",
+                   bg="#251F33", fg=color2, width=15)
+nmb = tk.Label(text=f"Itération: {itération}",
+               bg="#251F33", fg=color2, width=15)
+vit_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
+                     font=("Arial", 14), activeforeground="#251F33",
+                     activebackground=color2,
+                     width=1, height=1, command=plus)
+vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
+                      font=("Arial", 14), width=1, height=1,
+                      activeforeground="#251F33",
+                      activebackground=color2, command=moins)
 
 
 # Affichage des labels et boutons ci-dessus
@@ -298,8 +320,22 @@ reverse.grid(row=3, column=0, sticky="s", pady=36)
 
 vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
 nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
-vit_moins.grid(row=1, column=0, sticky="se", padx=30)
-vit_plus.grid(row=1, column=0, sticky="sw", padx=0)
+vit_moins.grid(row=1, column=0, sticky="s", padx=10)
+vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
+
+
+# afficher un menu en haut à gauche de l'écran
+
+menui = tk.Menu(window)
+menu_bar = tk.Menu(menui, tearoff=0)
+
+menu_bar.add_command(label="Save", command=save)
+menu_bar.add_command(label="Load", command=load)
+menu_bar.add_command(label="Quit", command=window.destroy)  # commande
+
+menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
+
+window.config(menu=menui)
 
 canva.grid(column=1, row=1, rowspan=4)
 window.mainloop()     
