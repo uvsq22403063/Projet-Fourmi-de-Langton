@@ -302,4 +302,4 @@ vit_moins.grid(row=1, column=0, sticky="se", padx=30)
 vit_plus.grid(row=1, column=0, sticky="sw", padx=0)
 
 canva.grid(column=1, row=1, rowspan=4)
-window.mainloop()
+window.mainloop()     
