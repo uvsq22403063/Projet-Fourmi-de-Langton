@@ -58,7 +58,7 @@ def fleche(dir):
     return coor
 
 
-fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
+fourmi = canva.create_polygon(fleche(direction), width=0, fill="darkblue")
 
 
 def passage_mural():
@@ -135,7 +135,8 @@ def deplacement():
                 direction = "s"
                 u += 1
         passage_mural()
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
+        fourmi = canva.create_polygon(fleche(direction), width=0,
+                                      fill="darkblue")
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
@@ -190,7 +191,8 @@ def reversse():
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction = "e"
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
+        fourmi = canva.create_polygon(fleche(direction), width=0,
+                                      fill="darkblue")
         canva.after(speed, reversse)
         itération -= 1
         nmb.config(text=f"Itération: {itération}")
@@ -338,4 +340,4 @@ menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
 window.config(menu=menui)
 
 canva.grid(column=1, row=1, rowspan=4)
-window.mainloop()     
+window.mainloop()
