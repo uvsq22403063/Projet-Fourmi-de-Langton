@@ -236,7 +236,7 @@ def reset():
     itération = 0
     direction = "n"
     nmb.config(text=f"Itération: {itération}")
-    fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
+    fourmi = canva.create_polygon(fleche(direction), width=0, fill="darkblue")
 
     return
 
