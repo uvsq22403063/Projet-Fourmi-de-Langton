@@ -226,7 +226,7 @@ def undoo():
 
 def reset():
     """Fonction qui reconfigure la grille, dans la situation initiale"""
-    global pauses, k, u, direction2, itération, fourmi
+    global pauses, k, u, direction2, itération, fourmi, speed
     canva.delete(fourmi)
     for i in range(len(cases)):
         for j in range(len(cases[0])):
@@ -235,8 +235,11 @@ def reset():
     k, u = 45, 35
     pauses = True
     itération = 0
+    speed = 10
     direction2 = direction1
     nmb.config(text=f"Itération: {itération}")
+    vitesse.config(text=f"Tps/Itérations: {speed}")
+
     fourmi = canva.create_polygon(fleche(direction2), width=0,
                                   fill="lightblue")
 
