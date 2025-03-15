@@ -284,8 +284,8 @@ def charger():
     """permet de recharger la grille """
     global etat_fourmis, color1, color2, k, u, itération
     global direction1, direction2, speed, couleur, cases
-    global fourmi
-
+    global fourmi, pauses
+    pauses = True
     canva.delete(fourmi)
 
     fichier = open('donnee_grille.json', 'r')
