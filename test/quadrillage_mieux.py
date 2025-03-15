@@ -307,13 +307,13 @@ def charger():
     nmb.config(text=f"Itération: {itération}")
     fourmi = canva.create_polygon(fleche(direction2), width=0,
                                   fill="lightblue")
-    for k in range(len(cases)):
+    for i in range(len(cases)):
 
-        for u in range(len(cases[k])):
-            if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color1)
+        for v in range(len(cases[i])):
+            if couleur[i][v] == 0:
+                canva.itemconfig(cases[i][v], fill=color1)
             else:
-                canva.itemconfig(cases[k][u], fill=color2)
+                canva.itemconfig(cases[i][v], fill=color2)
 
     print("chargement de la grille")
 
