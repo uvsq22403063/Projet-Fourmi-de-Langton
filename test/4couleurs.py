@@ -109,7 +109,7 @@ def pause_reverse():
     reversse()
 
 
-def gauche():
+def droite():
     global k, u, direction2, itération, fourmi
     if direction2 == "s":
         direction2 = "w"
@@ -125,7 +125,7 @@ def gauche():
         u += 1
 
 
-def droite():
+def gauche():
     global k, u, direction2, itération, fourmi
     if direction2 == "s":
         direction2 = "e"
@@ -153,7 +153,7 @@ def deplacement():
             elif couleur[k][u] == 3:
                 canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
-            gauche()
+            droite()
         elif couleur[k][u] == 1 or couleur[k][u] == 2:
             if couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color2)
@@ -161,7 +161,7 @@ def deplacement():
             elif couleur[k][u] == 2:
                 canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
-            droite()
+            gauche()
         passage_mural()
         fourmi = canva.create_polygon(fleche(direction2), width=0,
                                       fill="black")
