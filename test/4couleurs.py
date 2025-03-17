@@ -1,10 +1,6 @@
 import tkinter as tk
 import json
 
-color0 = "green"
-color1 = "yellow"
-color2 = "red"
-color3 = "blue"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
@@ -15,6 +11,17 @@ direction2 = "n"
 pauses = True
 cases = []
 couleur = []
+nbcolor = 4
+if nbcolor == 2:
+    color0 = "white"
+    color1 = "black"
+else:
+    color0 = "green"
+    color1 = "yellow"
+    color2 = "red"
+    color3 = "dodgerblue"
+    color4 = "black"
+    color5 = "white"
 
 
 window = tk.Tk()
@@ -102,6 +109,38 @@ def pause_reverse():
     reversse()
 
 
+def gauche():
+    global k, u, direction2, itération, fourmi
+    if direction2 == "s":
+        direction2 = "w"
+        k -= 1
+    elif direction2 == "w":
+        direction2 = "n"
+        u -= 1
+    elif direction2 == "n":
+        direction2 = "e"
+        k += 1
+    elif direction2 == "e":
+        direction2 = "s"
+        u += 1
+
+
+def droite():
+    global k, u, direction2, itération, fourmi
+    if direction2 == "s":
+        direction2 = "e"
+        k -= 1
+    elif direction2 == "w":
+        direction2 = "s"
+        u -= 1
+    elif direction2 == "n":
+        direction2 = "w"
+        k += 1
+    elif direction2 == "e":
+        direction2 = "n"
+        u += 1
+
+
 def deplacement():
     """Programme le mouvement de la fourmi"""
     global k, u, direction2, itération, fourmi
@@ -114,18 +153,7 @@ def deplacement():
             elif couleur[k][u] == 3:
                 canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
-            if direction2 == "s":
-                direction2 = "w"
-                k -= 1
-            elif direction2 == "w":
-                direction2 = "n"
-                u -= 1
-            elif direction2 == "n":
-                direction2 = "e"
-                k += 1
-            elif direction2 == "e":
-                direction2 = "s"
-                u += 1
+            gauche()
         elif couleur[k][u] == 1 or couleur[k][u] == 2:
             if couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color2)
@@ -133,18 +161,7 @@ def deplacement():
             elif couleur[k][u] == 2:
                 canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
-            if direction2 == "s":
-                direction2 = "e"
-                k += 1
-            elif direction2 == "e":
-                direction2 = "n"
-                u -= 1
-            elif direction2 == "n":
-                direction2 = "w"
-                k -= 1
-            elif direction2 == "w":
-                direction2 = "s"
-                u += 1
+            droite()
         passage_mural()
         fourmi = canva.create_polygon(fleche(direction2), width=0,
                                       fill="black")
