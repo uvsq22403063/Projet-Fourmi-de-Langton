@@ -317,8 +317,13 @@ def charger():
         for v in range(len(cases[i])):
             if couleur[i][v] == 0:
                 canva.itemconfig(cases[i][v], fill=color1)
-            else:
+            elif couleur[i][v] == 1:
                 canva.itemconfig(cases[i][v], fill=color2)
+            elif couleur[i][v] == 2:
+                canva.itemconfig(cases[i][v], fill=color3)
+            elif couleur[i][v] == 3:
+                canva.itemconfig(cases[i][v], fill=color4)
+
 
     print("chargement de la grille")
 
