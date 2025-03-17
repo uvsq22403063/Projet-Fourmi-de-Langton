@@ -323,26 +323,31 @@ nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
 vit_moins.grid(row=1, column=0, sticky="s", padx=10)
 vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
 
+
 def sauvegarde():
     """permet de sauvegarder la grille """
-    etat_de_case = {"couleurs":couleur} 
-    with open('donnee.json','w') as fichier :
-     etat_json = json.dump(etat_de_case, fichier )
+    global pauses, etat_fourmis
+    pauses = True
+    etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+                    "couleur_cases2": couleur[k][u], "coord_x": k,
+                    "coord_y": u, "itérations": itération,
+                    "direction": direction, "vitesse": speed}
+
+    fichier = open('donnee_grille.json', 'w')
+
+    json.dump(etat_fourmis, fichier, indent=4)
     print("sauvegarde de la grille ")
+    fichier.close()
+
 
 def recharge_grille():
     """permet de recharger la grille """
-    
-    etat_de_case = {"couleurs":couleur} 
-    with open('donnee.json','w') as fichier :
-      couleur = etat_de_case.get("couleur", {})
-      return couleur 
-      
-    
-    
-     
-    
-    
+
+    etat_de_case = {"couleurs": couleur}
+    with open('donnee.json', 'w') as fichier:
+        couleur = etat_de_case.get("couleur", {})
+        return couleur
+
 
 # afficher un menu en haut à gauche de l'écran
 
@@ -358,4 +363,4 @@ menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
 window.config(menu=menui)
 
 canva.grid(column=1, row=1, rowspan=4)
-window.mainloop()     
+window.mainloop()
