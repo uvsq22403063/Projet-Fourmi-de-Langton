@@ -1,10 +1,10 @@
 import tkinter as tk
 import json
 
-color1 = "green"
-color2 = "yellow"
-color3 = "red"
-color4 = "blue"
+color0 = "green"
+color1 = "yellow"
+color2 = "red"
+color3 = "blue"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
@@ -33,7 +33,7 @@ for i in range(larg // taille_carre):
         x1 = (i+1) * 10
         y1 = (j+1) * 10
         carre = canva.create_rectangle(x0, y0, x1, y1, outline="#251F33",
-                                       fill=color1, width=1)
+                                       fill=color0, width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
     cases.append(colonnes)
@@ -109,10 +109,10 @@ def deplacement():
         canva.delete(fourmi)
         if couleur[k][u] == 0 or couleur[k][u] == 3:
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color2)
+                canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 1
             elif couleur[k][u] == 3:
-                canva.itemconfig(cases[k][u], fill=color1)
+                canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
             if direction2 == "s":
                 direction2 = "w"
@@ -128,10 +128,10 @@ def deplacement():
                 u += 1
         elif couleur[k][u] == 1 or couleur[k][u] == 2:
             if couleur[k][u] == 1:
-                canva.itemconfig(cases[k][u], fill=color3)
+                canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 2
             elif couleur[k][u] == 2:
-                canva.itemconfig(cases[k][u], fill=color4)
+                canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
             if direction2 == "s":
                 direction2 = "e"
@@ -162,76 +162,76 @@ def reversse():
             u += 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color4)
+                canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
                 direction2 = "w"
             elif couleur[k][u] == 1:
-                canva.itemconfig(cases[k][u], fill=color1)
+                canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
                 direction2 = "w"
             elif couleur[k][u] == 2:
-                canva.itemconfig(cases[k][u], fill=color2)
+                canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 1
                 direction2 = "e"
             elif couleur[k][u] == 3:
-                canva.itemconfig(cases[k][u], fill=color3)
+                canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 2
                 direction2 = "e"
         elif direction2 == "w":
             k += 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color4)
+                canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
                 direction2 = "s"
             elif couleur[k][u] == 1:
-                canva.itemconfig(cases[k][u], fill=color1)
+                canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
                 direction2 = "s"
             elif couleur[k][u] == 2:
-                canva.itemconfig(cases[k][u], fill=color2)
+                canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 1
                 direction2 = "n"
             elif couleur[k][u] == 3:
-                canva.itemconfig(cases[k][u], fill=color3)
+                canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 2
                 direction2 = "n"
         elif direction2 == "e":
             k -= 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color4)
+                canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
                 direction2 = "n"
             elif couleur[k][u] == 1:
-                canva.itemconfig(cases[k][u], fill=color1)
+                canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
                 direction2 = "n"
             elif couleur[k][u] == 2:
-                canva.itemconfig(cases[k][u], fill=color2)
+                canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 1
                 direction2 = "s"
             elif couleur[k][u] == 3:
-                canva.itemconfig(cases[k][u], fill=color3)
+                canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 2
                 direction2 = "s"
         elif direction2 == "s":
             u -= 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color4)
+                canva.itemconfig(cases[k][u], fill=color3)
                 couleur[k][u] = 3
                 direction2 = "e"
             elif couleur[k][u] == 1:
-                canva.itemconfig(cases[k][u], fill=color1)
+                canva.itemconfig(cases[k][u], fill=color0)
                 couleur[k][u] = 0
                 direction2 = "e"
             elif couleur[k][u] == 2:
-                canva.itemconfig(cases[k][u], fill=color2)
+                canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 1
                 direction2 = "w"
             elif couleur[k][u] == 3:
-                canva.itemconfig(cases[k][u], fill=color3)
+                canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 2
                 direction2 = "w"
         fourmi = canva.create_polygon(fleche(direction2), width=0,
@@ -267,7 +267,7 @@ def reset():
     canva.delete(fourmi)
     for i in range(len(cases)):
         for j in range(len(cases[0])):
-            canva.itemconfig(cases[i][j], fill=color1)
+            canva.itemconfig(cases[i][j], fill=color0)
             couleur[i][j] = 0
     k, u = 45, 35
     pauses = True
@@ -305,7 +305,7 @@ def sauvegarde():
     """permet de sauvegarder la grille """
     global pauses, etat_fourmis
     pauses = True
-    etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+    etat_fourmis = {"couleurs_bg": color0, "couleurs_cases": color1,
                     "coord_x": k, "coord_y": u, "itérations": itération,
                     "direction1": direction1, "direction2": direction2,
                     "vitesse": speed, "couleur_cases2": couleur}
@@ -319,7 +319,7 @@ def sauvegarde():
 
 def charger():
     """permet de recharger la grille """
-    global etat_fourmis, color1, color2, k, u, itération
+    global etat_fourmis, color0, color1, k, u, itération
     global direction1, direction2, speed, couleur, cases
     global fourmi, pauses
     pauses = True
@@ -330,8 +330,8 @@ def charger():
     etat_fourmis = json.load(fichier)
     fichier.close()
 
-    color1 = etat_fourmis["couleurs_bg"]
-    color2 = etat_fourmis["couleurs_cases"]
+    color0 = etat_fourmis["couleurs_bg"]
+    color1 = etat_fourmis["couleurs_cases"]
     k = etat_fourmis["coord_x"]
     u = etat_fourmis["coord_y"]
     itération = etat_fourmis["itérations"]
@@ -348,14 +348,13 @@ def charger():
 
         for v in range(len(cases[i])):
             if couleur[i][v] == 0:
-                canva.itemconfig(cases[i][v], fill=color1)
+                canva.itemconfig(cases[i][v], fill=color0)
             elif couleur[i][v] == 1:
-                canva.itemconfig(cases[i][v], fill=color2)
+                canva.itemconfig(cases[i][v], fill=color1)
             elif couleur[i][v] == 2:
-                canva.itemconfig(cases[i][v], fill=color3)
+                canva.itemconfig(cases[i][v], fill=color2)
             elif couleur[i][v] == 3:
-                canva.itemconfig(cases[i][v], fill=color4)
-
+                canva.itemconfig(cases[i][v], fill=color3)
 
     print("chargement de la grille")
 
