@@ -101,7 +101,7 @@ def pause_reverse():
 
 
 def droite():
-    global k, u, direction2, itération, fourmi
+    global k, u, direction2
     if direction2 == "s":
         direction2 = "w"
         k -= 1
@@ -117,7 +117,7 @@ def droite():
 
 
 def gauche():
-    global k, u, direction2, itération, fourmi
+    global k, u, direction2
     if direction2 == "s":
         direction2 = "e"
         k -= 1
