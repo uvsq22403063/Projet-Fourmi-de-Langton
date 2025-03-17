@@ -11,7 +11,7 @@ direction2 = "n"
 pauses = True
 cases = []
 couleur = []
-nbcolor = (6, 0)
+nbcolor = 4
 if nbcolor == 2:
     color = ["white", "black"]
 elif nbcolor == 4:
@@ -154,10 +154,10 @@ def deplacement():
         if nbcolor == 4:
             if couleur[k][u] == 0 or couleur[k][u] == 3:
                 if couleur[k][u] == 0:
-                    canva.itemconfig(cases[k][u], fill=color1)
+                    canva.itemconfig(cases[k][u], fill=color[1])
                     couleur[k][u] = 1
                 elif couleur[k][u] == 3:
-                    canva.itemconfig(cases[k][u], fill=color0)
+                    canva.itemconfig(cases[k][u], fill=color[0])
                     couleur[k][u] = 0
                 droite()
             elif couleur[k][u] == 1 or couleur[k][u] == 2:
