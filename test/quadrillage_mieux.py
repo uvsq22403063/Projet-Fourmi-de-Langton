@@ -120,16 +120,16 @@ def gauche():
     global k, u, direction2
     if direction2 == "s":
         direction2 = "e"
-        k -= 1
+        k += 1
     elif direction2 == "w":
         direction2 = "s"
-        u -= 1
+        u += 1
     elif direction2 == "n":
         direction2 = "w"
-        k += 1
+        k -= 1
     elif direction2 == "e":
         direction2 = "n"
-        u += 1
+        u -= 1
 
 
 def deplacement():
