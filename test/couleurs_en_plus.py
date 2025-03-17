@@ -162,46 +162,78 @@ def reversse():
             u += 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color2)
-                couleur[k][u] = 1
-                direction2 = "e"
+                canva.itemconfig(cases[k][u], fill=color4)
+                couleur[k][u] = 3
+                direction2 = "w"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction2 = "w"
+            elif couleur[k][u] == 2:
+                canva.itemconfig(cases[k][u], fill=color2)
+                couleur[k][u] = 1
+                direction2 = "e"
+            elif couleur[k][u] == 3:
+                canva.itemconfig(cases[k][u], fill=color3)
+                couleur[k][u] = 2
+                direction2 = "e"
         elif direction2 == "w":
             k += 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color2)
-                couleur[k][u] = 1
-                direction2 = "n"
+                canva.itemconfig(cases[k][u], fill=color4)
+                couleur[k][u] = 3
+                direction2 = "s"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction2 = "s"
+            elif couleur[k][u] == 2:
+                canva.itemconfig(cases[k][u], fill=color2)
+                couleur[k][u] = 1
+                direction2 = "n"
+            elif couleur[k][u] == 3:
+                canva.itemconfig(cases[k][u], fill=color3)
+                couleur[k][u] = 2
+                direction2 = "n"
         elif direction2 == "e":
             k -= 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color2)
-                couleur[k][u] = 1
-                direction2 = "s"
+                canva.itemconfig(cases[k][u], fill=color4)
+                couleur[k][u] = 3
+                direction2 = "n"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction2 = "n"
+            elif couleur[k][u] == 2:
+                canva.itemconfig(cases[k][u], fill=color2)
+                couleur[k][u] = 1
+                direction2 = "s"
+            elif couleur[k][u] == 3:
+                canva.itemconfig(cases[k][u], fill=color3)
+                couleur[k][u] = 2
+                direction2 = "s"
         elif direction2 == "s":
             u -= 1
             passage_mural()
             if couleur[k][u] == 0:
-                canva.itemconfig(cases[k][u], fill=color2)
-                couleur[k][u] = 1
-                direction2 = "w"
+                canva.itemconfig(cases[k][u], fill=color4)
+                couleur[k][u] = 3
+                direction2 = "e"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction2 = "e"
+            elif couleur[k][u] == 2:
+                canva.itemconfig(cases[k][u], fill=color2)
+                couleur[k][u] = 1
+                direction2 = "w"
+            elif couleur[k][u] == 3:
+                canva.itemconfig(cases[k][u], fill=color3)
+                couleur[k][u] = 2
+                direction2 = "w"
         fourmi = canva.create_polygon(fleche(direction2), width=0,
                                       fill="black")
         canva.after(speed, reversse)
