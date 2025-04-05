@@ -15,9 +15,9 @@ nbcolor = 4
 if nbcolor == 2:
     color = ["white", "black"]
 elif nbcolor == 4:
-    color = ["green", "yellow", "red", "dodgerblue"]
-elif nbcolor == (6, 0) or nbcolor == (6, 1):
-    color = ["green", "yellow", "orange", "red", "purple", "dodgerblue"]
+    color = ["white", "yellow", "red", "dodgerblue"]
+elif nbcolor == 6:
+    color = ["white", "yellow", "orange", "red", "purple", "dodgerblue"]
 
 
 def couleur_fourmi():
@@ -43,7 +43,7 @@ for i in range(larg // taille_carre):
         y0 = j * 10
         x1 = (i+1) * 10
         y1 = (j+1) * 10
-        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#251F33",
+        carre = canva.create_rectangle(x0, y0, x1, y1, outline="lightgrey",
                                        fill=color[0], width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
@@ -567,43 +567,43 @@ def charger():
 
 
 # Reset de la grille
-resset = tk.Button(window, text="Reset", bg="#251F33",
+resset = tk.Button(window, text="Reset", bg="lightgrey",
                    fg="black", font=("Impact", 14), bd=1,
-                   highlightthickness=0, activeforeground="#251F33",
+                   highlightthickness=0, activeforeground="lightgrey",
                    activebackground="black", command=reset)
 
 # Boutons PLAY/PAUSE et reverse
-pausse = tk.Button(window, text="Play/pause", bg="#251F33",
+pausse = tk.Button(window, text="Play/pause", bg="lightgrey",
                    fg="black", font=("Impact", 14), bd=1,
-                   highlightthickness=0, activeforeground="#251F33",
+                   highlightthickness=0, activeforeground="lightgrey",
                    activebackground="black", command=pause)
-reverse = tk.Button(window, text="Reverse", bg="#251F33",
+reverse = tk.Button(window, text="Reverse", bg="lightgrey",
                     fg="black", font=("Impact", 14), bd=1,
-                    highlightthickness=0, activeforeground="#251F33",
+                    highlightthickness=0, activeforeground="lightgrey",
                     activebackground="black", command=pause_reverse)
 
 # Boutons skip et undo
-skip = tk.Button(window, text="Skip", bg="#251F33",
+skip = tk.Button(window, text="Skip", bg="lightgrey",
                  fg="black", font=("Impact", 14), bd=1,
-                 highlightthickness=0, activeforeground="#251F33",
+                 highlightthickness=0, activeforeground="lightgrey",
                  activebackground="black", width=7, command=skipe)
-undo = tk.Button(window, text="Undo", bg="#251F33",
+undo = tk.Button(window, text="Undo", bg="lightgrey",
                  fg="black", font=("Impact", 14), bd=1,
-                 highlightthickness=0, activeforeground="#251F33",
+                 highlightthickness=0, activeforeground="lightgrey",
                  activebackground="black", width=7, command=undoo)
 
 # Vitesse de la clock
 vitesse = tk.Label(text=f"Tps/itération: {speed}ms",
-                   bg="#251F33", fg="black", width=15)
+                   bg="lightgrey", fg="black", width=15)
 nmb = tk.Label(text=f"Itération: {itération}",
-               bg="#251F33", fg="black", width=15)
-vit_plus = tk.Button(window, bg="#251F33", fg="black", text="+",
-                     font=("Arial", 14), activeforeground="#251F33",
+               bg="lightgrey", fg="black", width=15)
+vit_plus = tk.Button(window, bg="lightgrey", fg="black", text="+",
+                     font=("Arial", 14), activeforeground="lightgrey",
                      activebackground="black",
                      width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="#251F33", fg="black", text="-",
+vit_moins = tk.Button(window, bg="lightgrey", fg="black", text="-",
                       font=("Arial", 14), width=1, height=1,
-                      activeforeground="#251F33",
+                      activeforeground="lightgrey",
                       activebackground="black", command=moins)
 
 
