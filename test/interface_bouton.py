@@ -10,22 +10,98 @@ canva_dessus = tk.Canvas(window, bg="red", width=larg, height=haut)
 
 
 def jouer():
-    """ex: while pause = false:
-            (programme qui fait avancer fourmis)
-            canva.after(500, jouer)"""
+
+    return
 
 
 def pausse():
-    play.grid(row=3, column=4)
-    
-    pause.grid(row=3, column=2)
-    four_plus.grid(row=2, column=1, padx=5, pady=5, sticky='n')
-    four_moins.grid(row=2, column=0, padx=5, pady=5, sticky='nw')
-    fourmis.grid(row=1, column=0, sticky="s")
-    close.grid(row=0, column=0)
-    quadrillage()
 
-    canva.grid(row=1, column=2, columnspan=3, rowspan=2)
+    global tt_boutons
+    canva = tk.Canvas(window, bg="white", width=larg, height=haut)
+
+    color2 = "#ff1b2d"
+    speed = 10
+    itération = 0
+
+    # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
+    #                 bd=0, highlightthickness=0, command=deplacement)
+
+    # Reset de la grille
+    resset = tk.Button(window, text="Reset", bg="#251F33",
+                       fg=color2, font=("Impact", 14), bd=1,
+                       highlightthickness=0, activeforeground="#251F33",
+                       activebackground=color2, command=jouer)
+
+    # Boutons PLAY/PAUSE et reverse
+    pause = tk.Button(window, text="Play/pause", bg="#251F33",
+                      fg=color2, font=("Impact", 14), bd=1,
+                      highlightthickness=0, activeforeground="#251F33",
+                      activebackground=color2, command=jouer)
+    reverse = tk.Button(window, text="Reverse", bg="#251F33",
+                        fg=color2, font=("Impact", 14), bd=1,
+                        highlightthickness=0, activeforeground="#251F33",
+                        activebackground=color2, command=jouer)
+
+    # Boutons skip et undo
+    skip = tk.Button(window, text="Skip", bg="#251F33",
+                     fg=color2, font=("Impact", 14), bd=1,
+                     highlightthickness=0, activeforeground="#251F33",
+                     activebackground=color2, width=7, command=jouer)
+    undo = tk.Button(window, text="Undo", bg="#251F33",
+                     fg=color2, font=("Impact", 14), bd=1,
+                     highlightthickness=0, activeforeground="#251F33",
+                     activebackground=color2, width=7, command=jouer)
+
+    # Vitesse de la clock
+    vitesse = tk.Label(text=f"Tps/itération: {speed}ms",
+                       bg="#251F33", fg=color2, width=15)
+    nmb = tk.Label(text=f"Itération: {itération}",
+                   bg="#251F33", fg=color2, width=15)
+    vit_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
+                         font=("Arial", 14), activeforeground="#251F33",
+                         activebackground=color2,
+                         width=1, height=1, command=jouer)
+    vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
+                          font=("Arial", 14), width=1, height=1,
+                          activeforeground="#251F33",
+                          activebackground=color2, command=jouer)
+    delte = tk.Button(window, bg="#251F33", fg=color2, text="delete",
+                      font=("Arial", 14), activeforeground="#251F33",
+                      activebackground=color2, command=destroi)
+
+    # Affichage des labels et boutons ci-dessus
+
+    resset.grid(row=0, column=1)
+
+    skip.grid(row=3, column=0, sticky="n")
+    undo.grid(row=3, column=0, sticky="s")
+
+    pause.grid(row=2, column=0)
+    reverse.grid(row=3, column=0, sticky="s", pady=36)
+
+    vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
+    nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
+    vit_moins.grid(row=1, column=0, sticky="s", padx=10)
+    vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
+    delte.grid(row=0, column=0)
+
+    window.config(menu=menui)
+
+    canva.grid(column=1, row=1, rowspan=4)
+    tt_boutons = [resset, pause, reverse, skip, undo, vit_moins, vit_plus,
+                  vitesse, nmb, canva, delte]
+
+
+def destroi():
+    global tt_boutons, canva_dessus
+
+    for i in range(len(tt_boutons)):
+        tt_boutons[i].destroy()
+
+    canva_dessus = tk.Canvas(window, bg="red", width=larg, height=haut)
+    canva_dessus.grid(row=0, column=0)
+
+    return
 
 
 def nex():
@@ -34,51 +110,29 @@ def nex():
 
     return
 
-# Mis cette fonction ici pour voir le rendu
-
-
-def quadrillage():
-    """création d'un quadrillage"""
-    global larg, haut
-    long_case = 10
-
-    for i in range(0, larg, long_case):
-        canva.create_line(i, 0, i, haut, fill="black")
-
-    for j in range(0, larg, long_case):
-        canva.create_line(0, j, larg, j, fill="black")
-
-
-# J'ai créer cette fonction pour voir si la creation de rectangle
-# matchais bien avec la cadrillage et ça rend vraiment bien testez et essayez
-# de jouer avec les paramettres mais ça va rendre super avec
-# cette tecnhique qui est vraiment simple en plus
-
-
-def ligne_de_rectangle():
-    global x, y
-    canva.create_rectangle(x, y, x+10, y+10, fill="black")
-    x += 10
-    canva.after(500, ligne_de_rectangle)
-
 
 # création des boutons de la fenetre
 close = tk.Button(window, bg="red", text="Fermer", fg="black",
                   font=("Arial", 8), command=window.destroy)
-play = tk.Button(window, bg="grey", fg="black", text="PLAY",
-                 font=("Impact", 14), command=jouer)
-pause = tk.Button(window, bg="grey", fg="black", text="PAUSE",
-                  font=("Impact", 14), command=pausse)
-nexte = tk.Button(canva_dessus, bg="grey", fg="black", text="NEXT",
+
+nexte = tk.Button(window, bg="grey", fg="black", text="NEXT",
                   font=("Impact", 14), command=nex)
-four_plus = tk.Button(window, bg="grey", fg="black", text="+",
-                      font=("Arial", 14), command=nexte)
-four_moins = tk.Button(window, bg="grey", fg="black", text="-",
-                       font=("Arial", 14), command=nexte)
-fourmis = tk.Label(window, text="Fourmis", font=("Arial", 13), bg='grey')
 
+# afficher un menu en haut à gauche de l'écran
 
-canva_dessus.grid()
+menui = tk.Menu(window)
+menu_bar = tk.Menu(menui, tearoff=0)
+
+menu_bar.add_command(label="New", command=destroi)
+menu_bar.add_command(label="Save", command=jouer)
+menu_bar.add_command(label="Load", command=jouer)
+menu_bar.add_command(label="Quit", command=window.destroy)  # Commandes
+
+menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
+
+window.config(menu=menui)
+
+canva_dessus.grid(row=0, column=0)
 
 nexte.grid(row=3, column=3)
 
