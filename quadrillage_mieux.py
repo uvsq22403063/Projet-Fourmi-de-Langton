@@ -196,6 +196,16 @@ def reversse():
         nmb.config(text=f"Itération: {itération}")
 
 
+
+#""" cree d'autre fourmie 
+def nombre_fourmie():
+    """ permet de  demander a l'utilisateur a nombre de fourmie """
+    nombre_fourmie= int(input("nombre de fourmie"))
+    return(nombre_fourmie)
+
+nb_fourmie = tk.label(text = " nombre de fourmie", bg = "#251F33", fg = color2)
+nombre =tk.Button(window, text="choix du nombre de fourmie ", bg="#251F33",
+                    fg=color2,) 
 def skipe():
     """Avance le programme d'une itération"""
 

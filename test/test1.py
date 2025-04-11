@@ -1,21 +1,24 @@
 import tkinter as tk
 import json
 
+
 color1 = "black"
 color2 = "#ff1b2d"
 taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
 speed = 10
+nombre_four = 0
 itération = 0
-direction = "n"
+direction1 = "n"
+direction2 = "n"
 pauses = True
 cases = []
 couleur = []
 
 
 window = tk.Tk()
-window.title("La Fourmi de Langton")
+window.title("Fourmi de Langton")
 window.config(bg="#0a0a0a")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
@@ -39,6 +42,11 @@ for i in range(larg // taille_carre):
 # Liste permettant de vérifier la couleur de la case.
 couleur[k][u] = 0
 
+etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+                "couleur_cases2": couleur, "coord_x": k, "coord_y": u,
+                "itérations": itération, "direction1": direction1,
+                "direction2": direction2, "vitesse": speed}
+
 
 def fleche(dir):
     """Oriente la fourmi selon la direction souhaitée"""
@@ -58,7 +66,7 @@ def fleche(dir):
     return coor
 
 
-fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
+fourmi = canva.create_polygon(fleche(direction2), width=0, fill="lightblue")
 
 
 def passage_mural():
@@ -101,41 +109,42 @@ def pause_reverse():
 
 def deplacement():
     """Programme le mouvement de la fourmi"""
-    global k, u, direction, itération, fourmi
+    global k, u, direction2, itération, fourmi
     if pauses is False:
         canva.delete(fourmi)
         if couleur[k][u] == 0:
             canva.itemconfig(cases[k][u], fill=color2)
             couleur[k][u] = 1
-            if direction == "s":
-                direction = "w"
+            if direction2 == "s":
+                direction2 = "w"
                 k -= 1
-            elif direction == "w":
-                direction = "n"
+            elif direction2 == "w":
+                direction2 = "n"
                 u -= 1
-            elif direction == "n":
-                direction = "e"
+            elif direction2 == "n":
+                direction2 = "e"
                 k += 1
-            elif direction == "e":
-                direction = "s"
+            elif direction2 == "e":
+                direction2 = "s"
                 u += 1
         elif couleur[k][u] == 1:
             canva.itemconfig(cases[k][u], fill=color1)
             couleur[k][u] = 0
-            if direction == "s":
-                direction = "e"
+            if direction2 == "s":
+                direction2 = "e"
                 k += 1
-            elif direction == "e":
-                direction = "n"
+            elif direction2 == "e":
+                direction2 = "n"
                 u -= 1
-            elif direction == "n":
-                direction = "w"
+            elif direction2 == "n":
+                direction2 = "w"
                 k -= 1
-            elif direction == "w":
-                direction = "s"
+            elif direction2 == "w":
+                direction2 = "s"
                 u += 1
         passage_mural()
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
+        fourmi = canva.create_polygon(fleche(direction2), width=0,
+                                      fill="lightblue")
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
@@ -143,54 +152,55 @@ def deplacement():
 
 def reversse():
     """Retourne aux étapes précédentes"""
-    global k, u, direction, itération, fourmi
+    global k, u, direction2, itération, fourmi
     if pauses is False and itération >= 1:
         canva.delete(fourmi)
-        if direction == "n":
+        if direction2 == "n":
             u += 1
             passage_mural()
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
-                direction = "e"
+                direction2 = "e"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
-                direction = "w"
-        elif direction == "w":
+                direction2 = "w"
+        elif direction2 == "w":
             k += 1
             passage_mural()
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
-                direction = "n"
+                direction2 = "n"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
-                direction = "s"
-        elif direction == "e":
+                direction2 = "s"
+        elif direction2 == "e":
             k -= 1
             passage_mural()
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
-                direction = "s"
+                direction2 = "s"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
-                direction = "n"
-        elif direction == "s":
+                direction2 = "n"
+        elif direction2 == "s":
             u -= 1
             passage_mural()
             if couleur[k][u] == 0:
                 canva.itemconfig(cases[k][u], fill=color2)
                 couleur[k][u] = 1
-                direction = "w"
+                direction2 = "w"
             elif couleur[k][u] == 1:
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
-                direction = "e"
-        fourmi = canva.create_polygon(fleche(direction), width=0, fill=color2)
+                direction2 = "e"
+        fourmi = canva.create_polygon(fleche(direction2), width=0,
+                                      fill="lightblue")
         canva.after(speed, reversse)
         itération -= 1
         nmb.config(text=f"Itération: {itération}")
@@ -218,7 +228,7 @@ def undoo():
 
 def reset():
     """Fonction qui reconfigure la grille, dans la situation initiale"""
-    global pauses, k, u, direction, itération, fourmi
+    global pauses, k, u, direction2, itération, fourmi, speed
     canva.delete(fourmi)
     for i in range(len(cases)):
         for j in range(len(cases[0])):
@@ -227,11 +237,13 @@ def reset():
     k, u = 45, 35
     pauses = True
     itération = 0
-    direction = "n"
+    speed = 10
+    direction2 = direction1
     nmb.config(text=f"Itération: {itération}")
-    fourmi = canva.create_polygon(fleche(direction), width=0, fill="#ff1b2d")
+    vitesse.config(text=f"Tps/Itérations: {speed}")
 
-    return
+    fourmi = canva.create_polygon(fleche(direction2), width=0,
+                                  fill="lightblue")
 
 
 def moins():
@@ -254,14 +266,102 @@ def plus():
     nmb.config(text=f"Itération: {itération}")
 
 
-def save():
+def sauvegarde():
+    """permet de sauvegarder la grille """
+    global pauses, etat_fourmis
+    pauses = True
+    etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
+                    "coord_x": k, "coord_y": u, "itérations": itération,
+                    "direction1": direction1, "direction2": direction2,
+                    "vitesse": speed, "couleur_cases2": couleur}
 
-    return
+    fichier = open('donnee_grille.json', 'w')
+
+    json.dump(etat_fourmis, fichier)
+    print("sauvegarde de la grille ")
+    fichier.close()
 
 
-def load():
+def charger():
+    """permet de recharger la grille """
+    global etat_fourmis, color1, color2, k, u, itération
+    global direction1, direction2, speed, couleur, cases
+    global fourmi, pauses
+    pauses = True
+    canva.delete(fourmi)
 
-    return
+    fichier = open('donnee_grille.json', 'r')
+    # données = fichier.read()
+    etat_fourmis = json.load(fichier)
+    fichier.close()
+
+    color1 = etat_fourmis["couleurs_bg"]
+    color2 = etat_fourmis["couleurs_cases"]
+    k = etat_fourmis["coord_x"]
+    u = etat_fourmis["coord_y"]
+    itération = etat_fourmis["itérations"]
+    direction1 = etat_fourmis["direction1"]
+    direction2 = etat_fourmis["direction2"]
+    speed = etat_fourmis["vitesse"]
+    couleur = etat_fourmis["couleur_cases2"]
+
+    vitesse.config(text=f"Tps/itération: {speed}ms")
+    nmb.config(text=f"Itération: {itération}")
+    fourmi = canva.create_polygon(fleche(direction2), width=0,
+                                  fill="lightblue")
+    for i in range(len(cases)):
+
+        for v in range(len(cases[i])):
+            if couleur[i][v] == 0:
+                canva.itemconfig(cases[i][v], fill=color1)
+            else:
+                canva.itemconfig(cases[i][v], fill=color2)
+
+    print("chargement de la grille")
+
+
+
+#""" cree d'autre fourmie 
+def nombre_fourmie():
+    """ permet de  demander a l'utilisateur a nombre de fourmie """
+    nombre_fourmie= int(input("nombre de fourmie"))
+    return nombre_fourmie
+
+def moins_f():
+    """Réduit la vitesse de la fourmi"""
+
+    global nombre_four
+    if nombre_four >= 2:
+        nombre_four -= 1
+    else:
+        nombre_four == nombre_four
+    nb_fourmie.config(text=f"Nombre de fourmie: {nombre_four}")
+
+
+def plus_f():
+    """Augmente la vitesse de la fourmi"""
+    global nombre_four
+    nombre_four += 1
+    nb_fourmie.config(text=f"Nombre de fourmie: {nombre_four}")
+
+
+
+
+# nb_fourmie = tk.Button(window, text="nombre de fourmie", bg="#251F33",
+#                    fg=color2, font=("Impact", 14), bd=1,
+#                    highlightthickness=0, activeforeground="#251F33",
+#                    activebackground=color2, command=nombre_fourmie)
+# nb fourmie
+nb_fourmie = tk.Label(text=f"Nombre de fourmie : {nombre_four}",
+               bg="#251F33", fg=color2, width=15)
+nb_fourmie_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
+                     font=("Arial", 14), activeforeground="#251F33",
+                     activebackground=color2,
+                     width=1, height=1, command=plus_f)
+nb_fourmie_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
+                      font=("Arial", 14), width=1, height=1,
+                      activeforeground="#251F33",
+                      activebackground=color2, command=moins_f)
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
@@ -310,6 +410,10 @@ vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
 
 # Affichage des labels et boutons ci-dessus
 
+nb_fourmie.grid(row=3, column=0, sticky="s", pady=150, padx=10)
+nb_fourmie_plus.grid(row=3, column=0, sticky="s",pady=110, padx=10)
+nb_fourmie_moins.grid(row=3, column=0, sticky="sw",pady=110, padx=30)
+
 resset.grid(row=0, column=1)
 
 skip.grid(row=3, column=0, sticky="n")
@@ -324,38 +428,13 @@ vit_moins.grid(row=1, column=0, sticky="s", padx=10)
 vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
 
 
-def sauvegarde():
-    """permet de sauvegarder la grille """
-    global pauses, etat_fourmis
-    pauses = True
-    etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
-                    "couleur_cases2": couleur[k][u], "coord_x": k,
-                    "coord_y": u, "itérations": itération,
-                    "direction": direction, "vitesse": speed}
-
-    fichier = open('donnee_grille.json', 'w')
-
-    json.dump(etat_fourmis, fichier, indent=4)
-    print("sauvegarde de la grille ")
-    fichier.close()
-
-
-def recharge_grille():
-    """permet de recharger la grille """
-
-    etat_de_case = {"couleurs": couleur}
-    with open('donnee.json', 'w') as fichier:
-        couleur = etat_de_case.get("couleur", {})
-        return couleur
-
-
 # afficher un menu en haut à gauche de l'écran
 
 menui = tk.Menu(window)
 menu_bar = tk.Menu(menui, tearoff=0)
 
-menu_bar.add_command(label="Save", command=save)
-menu_bar.add_command(label="Load", command=load)
+menu_bar.add_command(label="Save", command=sauvegarde)
+menu_bar.add_command(label="Load", command=charger)
 menu_bar.add_command(label="Quit", command=window.destroy)  # commande
 
 menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
