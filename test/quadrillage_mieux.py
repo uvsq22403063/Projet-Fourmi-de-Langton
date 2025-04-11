@@ -40,11 +40,6 @@ for i in range(larg // taille_carre):
 # Liste permettant de vérifier la couleur de la case.
 couleur[k][u] = 0
 
-etat_fourmis = {"couleurs_bg": color1, "couleurs_cases": color2,
-                "couleur_cases2": couleur, "coord_x": k, "coord_y": u,
-                "itérations": itération, "direction1": direction1,
-                "direction2": direction2, "vitesse": speed}
-
 
 def fleche(dir):
     """Oriente la fourmi selon la direction souhaitée"""
@@ -105,6 +100,38 @@ def pause_reverse():
     reversse()
 
 
+def droite():
+    global k, u, direction2
+    if direction2 == "s":
+        direction2 = "w"
+        k -= 1
+    elif direction2 == "w":
+        direction2 = "n"
+        u -= 1
+    elif direction2 == "n":
+        direction2 = "e"
+        k += 1
+    elif direction2 == "e":
+        direction2 = "s"
+        u += 1
+
+
+def gauche():
+    global k, u, direction2
+    if direction2 == "s":
+        direction2 = "e"
+        k += 1
+    elif direction2 == "w":
+        direction2 = "s"
+        u += 1
+    elif direction2 == "n":
+        direction2 = "w"
+        k -= 1
+    elif direction2 == "e":
+        direction2 = "n"
+        u -= 1
+
+
 def deplacement():
     """Programme le mouvement de la fourmi"""
     global k, u, direction2, itération, fourmi
@@ -113,33 +140,11 @@ def deplacement():
         if couleur[k][u] == 0:
             canva.itemconfig(cases[k][u], fill=color2)
             couleur[k][u] = 1
-            if direction2 == "s":
-                direction2 = "w"
-                k -= 1
-            elif direction2 == "w":
-                direction2 = "n"
-                u -= 1
-            elif direction2 == "n":
-                direction2 = "e"
-                k += 1
-            elif direction2 == "e":
-                direction2 = "s"
-                u += 1
+            droite()
         elif couleur[k][u] == 1:
             canva.itemconfig(cases[k][u], fill=color1)
             couleur[k][u] = 0
-            if direction2 == "s":
-                direction2 = "e"
-                k += 1
-            elif direction2 == "e":
-                direction2 = "n"
-                u -= 1
-            elif direction2 == "n":
-                direction2 = "w"
-                k -= 1
-            elif direction2 == "w":
-                direction2 = "s"
-                u += 1
+            gauche()
         passage_mural()
         fourmi = canva.create_polygon(fleche(direction2), width=0,
                                       fill="lightblue")
