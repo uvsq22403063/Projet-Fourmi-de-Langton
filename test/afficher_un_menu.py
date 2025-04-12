@@ -40,8 +40,15 @@ def variables():
     elif nbcolorf == 6:
         nbcolorf = (6, 1)
 
-    subprocess.run(["python", ".\\test\\couleurs4.py"])
+    print(kf, uf, speedf, direction1f, nbcolorf)
     return kf, uf, speedf, direction1f, nbcolorf
+
+
+def lancer():
+    global kf, uf, speedf, direction1f, nbcolorf
+
+    kf, uf, speedf, direction1f, nbcolorf = variables()
+    subprocess.run(["python", ".\\test\\couleurs4.py"])
 
 
 if __name__ == "__main__":
@@ -113,14 +120,14 @@ if __name__ == "__main__":
     txt_couleur.pack(side="left")
 
     # bouton jouer
-    jouer = tk.Button(window, text="launch", command=variables)
+    jouer = tk.Button(window, text="launch", command=lancer)
     jouer.grid(row=4, column=1, padx=100)
 
     # création truc en haut à gauche
     menui = tk.Menu(window)
     menu_bar = tk.Menu(menui, tearoff=0)
 
-    menu_bar.add_command(label="launch", command=variables)
+    menu_bar.add_command(label="launch", command=lancer)
     menu_bar.add_command(label="quitter", command=window.destroy)
 
     menui.add_cascade(label="fichier", menu=menu_bar)
