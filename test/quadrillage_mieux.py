@@ -370,11 +370,11 @@ vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
 def nombre_fourmie():
     """Demander à l'utilisateur le nombre de fourmis à générer"""
 
-        nombre = int(entry.get())  # Récupérer la valeur de l'entry
-        print(f"Nombre de fourmis: {nombre}")
-        # Code pour créer les fourmis en fonction du nombre peut aller ici
-    except ValueError:
-        print("Veuillez entrer un nombre valide")
+    nombre = int(entry.get())  # Récupérer la valeur de l'entry
+    print(f"Nombre de fourmis: {nombre}")
+
+    # Code pour créer les fourmis en fonction du nombre peut aller ici
+
 
 # Initialisation de la fenêtre Tkinter
 window = tk.Tk()
@@ -393,9 +393,9 @@ entry = tk.Entry(window)
 entry.pack(pady=10)
 
 # Bouton pour valider le nombre de fourmis
-button = tk.Button(window, text="Choisir le nombre de fourmis", bg="#251F33", fg=color2, command=nombre_fourmie)
+button = tk.Button(window, text="Choisir le nombre de fourmis", bg="#251F33",
+                   fg=color2, command=nombre_fourmie)
 button.pack(pady=10)
-
 
 
 # Affichage des labels et boutons ci-dessus
@@ -412,7 +412,6 @@ vitesse.grid(row=1, column=0, sticky="s", pady=50, padx=10)
 nmb.grid(row=1, column=0, sticky="s", pady=70, padx=10)
 vit_moins.grid(row=1, column=0, sticky="s", padx=10)
 vit_plus.grid(row=1, column=0, sticky="sw", padx=30)
-
 
 
 # afficher un menu en haut à gauche de l'écran
