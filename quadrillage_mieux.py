@@ -196,16 +196,20 @@ def reversse():
         nmb.config(text=f"Itération: {itération}")
 
 
+# cree d'autre fourmie
 
-#""" cree d'autre fourmie 
+
 def nombre_fourmie():
     """ permet de  demander a l'utilisateur a nombre de fourmie """
-    nombre_fourmie= int(input("nombre de fourmie"))
-    return(nombre_fourmie)
+    nombre_fourmie = int(input("nombre de fourmie"))
+    return nombre_fourmie
 
-nb_fourmie = tk.label(text = " nombre de fourmie", bg = "#251F33", fg = color2)
-nombre =tk.Button(window, text="choix du nombre de fourmie ", bg="#251F33",
-                    fg=color2,) 
+
+nb_fourmie = tk.label(text=" nb fourmie", bg="#251F33", fg=color2)
+nombre = tk.Button(window, text="choix du nombre de fourmie ", bg="#251F33",
+                   fg=color2,)
+
+
 def skipe():
     """Avance le programme d'une itération"""
 
@@ -348,4 +352,4 @@ menui.add_cascade(label="File", menu=menu_bar)  # nom du menu
 window.config(menu=menui)
 
 canva.grid(column=1, row=1, rowspan=4)
-window.mainloop()     
+window.mainloop()
