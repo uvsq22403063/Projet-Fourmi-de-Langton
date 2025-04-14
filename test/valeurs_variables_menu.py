@@ -1,6 +1,6 @@
 import json
 
-kf, uf, speedf, direction1f, nbcolorf = 0, 0, 110, 0, 0
+kf, uf, speedf, direction1f, nbcolorf = 0, 0, 0, 0, 0
 
 
 def sauvegardes(k, u, speed, direction1, nbcolor):

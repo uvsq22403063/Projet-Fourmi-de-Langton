@@ -38,8 +38,6 @@ def variables():
 
     if nbcolorf < 2 or nbcolorf > 6:
         nbcolorf = 2
-    elif nbcolorf == 6:
-        nbcolorf = (6, 0)
 
     vv.sauvegardes(kf, uf, speedf, direction1f, nbcolorf)
 
