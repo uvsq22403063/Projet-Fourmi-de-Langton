@@ -28,5 +28,10 @@ def charge():
     uf = variables["uf"]
     speedf = variables["speedf"]
     direction1f = variables["direction1f"]
-    nbcolorf = variables["nbcolorf"]
+
+    if variables["nbcolorf"] == 6:
+        nbcolorf = (6, 0)
+    else:
+        nbcolorf = variables["nbcolorf"]
+
     fichier.close()

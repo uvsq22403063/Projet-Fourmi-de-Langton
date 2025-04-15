@@ -19,7 +19,7 @@ if nbcolor == 2:
     color = ["white", "black"]
 elif nbcolor == 4:
     color = ["white", "yellow", "red", "dodgerblue"]
-elif nbcolor == 6:
+elif nbcolor == (6, 0):
     color = ["white", "yellow", "orange", "red", "purple", "dodgerblue"]
 
 
