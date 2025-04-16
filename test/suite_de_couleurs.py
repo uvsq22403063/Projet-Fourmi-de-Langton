@@ -1,20 +1,17 @@
 import tkinter as tk
 import json
-import valeurs_variables_menu as vv
-
-vv.charge()
 
 taille_carre = 10
 larg, haut = 900, 700
-k, u = vv.kf, vv.uf
-speed = vv.speedf
+k, u = 45, 35
+speed = 10
 itération = 0
-direction1 = vv.direction1f
+direction1 = "n"
 direction2 = "n"
 pauses = True
 cases = []
 couleur = []
-suite = vv.suitef
+suite = "gggd"
 if len(suite) == 2:
     color = ["white", "black"]
 elif len(suite) == 3:

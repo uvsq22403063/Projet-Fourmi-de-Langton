@@ -19,7 +19,7 @@ def sauvegardes(k, u, speed, direction1, nbcolor, suite):
 
 def charge():
     """permet de charger les variables """
-    global kf, uf, speedf, direction1f, nbcolorf, suitef
+    global kf, uf, speedf, direction1f, nbcolorf
 
     fichier = open('valeurs.json', 'r')
 
@@ -29,7 +29,6 @@ def charge():
     uf = variables["uf"]
     speedf = variables["speedf"]
     direction1f = variables["direction1f"]
-    suitef = variables["suitef"]
 
     if variables["nbcolorf"] == 6:
         nbcolorf = (6, 0)
