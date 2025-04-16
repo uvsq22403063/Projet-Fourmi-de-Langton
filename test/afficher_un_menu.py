@@ -11,14 +11,15 @@ def variables():
     speedf = int(txt_speed.get())
     direction1f = str(txt_direc.get())
     nbcolorf = int(txt_couleur.get())
+    suitef = str(txt_suite.get())
 
-    if "n" in direction1f:
+    if direction1f[0] == "n":
         direction1f = "n"
-    elif ("w" or "o") in direction1f:
+    elif direction1f[0] == "w" or direction1f[0] == "o":
         direction1f = "w"
-    elif "s" in direction1f:
+    elif direction1f[0] == "s":
         direction1f = "s"
-    elif "e" in direction1f:
+    elif direction1f[0] == "e":
         direction1f = "e"
     else:
         direction1f = "n"
@@ -39,7 +40,9 @@ def variables():
     if nbcolorf < 2 or nbcolorf > 6:
         nbcolorf = 2
 
-    vv.sauvegardes(kf, uf, speedf, direction1f, nbcolorf)
+    suitef.lower()
+
+    vv.sauvegardes(kf, uf, speedf, direction1f, nbcolorf, suitef)
 
     lancer()
 
@@ -63,11 +66,13 @@ frame_speed = tk.Frame(window, height=50, width=20)
 frame_coord = tk.Frame(window)
 frame_direc = tk.Frame(window)
 frame_nb_couleur = tk.Frame(window)
+frame_suite = tk.Frame(window)
 
 frame_speed.grid(row=1)
 frame_coord.grid(row=2)
 frame_direc.grid(row=3)
 frame_nb_couleur.grid(row=4)
+frame_suite.grid(row=5)
 
 # ajout des labels et champs de texte pour les variables
 # vitesse
@@ -80,7 +85,7 @@ txt_speed.pack(side="right")
 
 # coordonées de bases
 
-label_coordx = tk.Label(frame_coord, text="x(0 à90):", font=("Arial", 14))
+label_coordx = tk.Label(frame_coord, text="x(0 à 90):", font=("Arial", 14))
 label_coordx.pack(side="left", ipadx=10)
 txt_coordx = tk.Entry(frame_coord, font=("Arial", 14), width=4)
 txt_coordx.pack(side="left", ipadx=10)
@@ -104,6 +109,11 @@ label_nb_couleurs = tk.Label(frame_nb_couleur, text="couleurs(2 à 6):",
 label_nb_couleurs.pack(side="left")
 txt_couleur = tk.Entry(frame_nb_couleur, font=("Arial", 14))
 txt_couleur.pack(side="left")
+label_suite = tk.Label(frame_suite, text="suite (écrire une suite de g et d):",
+                       font=("Arial", 14))
+label_suite.pack(side="left")
+txt_suite = tk.Entry(frame_suite, font=("Arial", 14))
+txt_suite.pack(side="left")
 
 # bouton jouer
 

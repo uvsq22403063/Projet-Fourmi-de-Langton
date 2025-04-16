@@ -1,13 +1,14 @@
 import json
 
-kf, uf, speedf, direction1f, nbcolorf = 0, 0, 0, 0, 0
+kf, uf, speedf, direction1f, nbcolorf, suitef = 0, 0, 0, 0, 0, 0
 
 
-def sauvegardes(k, u, speed, direction1, nbcolor):
+def sauvegardes(k, u, speed, direction1, nbcolor, suite):
     """permet de sauvegarder les variables """
 
     variables = {"kf": k, "uf": u, "speedf": speed,
-                 "direction1f": direction1, "nbcolorf": nbcolor}
+                 "direction1f": direction1, "nbcolorf": nbcolor,
+                 "suitef": suite}
 
     fichier = open('valeurs.json', 'w')
 
@@ -18,7 +19,7 @@ def sauvegardes(k, u, speed, direction1, nbcolor):
 
 def charge():
     """permet de charger les variables """
-    global kf, uf, speedf, direction1f, nbcolorf
+    global kf, uf, speedf, direction1f, nbcolorf, suitef
 
     fichier = open('valeurs.json', 'r')
 
@@ -28,6 +29,7 @@ def charge():
     uf = variables["uf"]
     speedf = variables["speedf"]
     direction1f = variables["direction1f"]
+    suitef = variables["suitef"]
 
     if variables["nbcolorf"] == 6:
         nbcolorf = (6, 0)
