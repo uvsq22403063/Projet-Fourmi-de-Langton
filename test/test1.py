@@ -406,12 +406,14 @@ def charger():
     print("chargement de la grille")
 
 
+# cree d'autre fourmie
 
-#""" cree d'autre fourmie 
+
 def nombre_fourmie():
     """ permet de  demander a l'utilisateur a nombre de fourmie """
-    nombre_fourmie= int(input("nombre de fourmie"))
+    nombre_fourmie = int(input("nombre de fourmie"))
     return nombre_fourmie
+
 
 def moins_f():
     """Réduit la vitesse de la fourmi"""
@@ -430,6 +432,7 @@ def plus_f():
     nombre_four += 1
     nb_fourmie.config(text=f"Nombre de fourmie : {nombre_four}")
 
+<<<<<<< HEAD
 
 fourmis = []
 def generer_fourmis():
@@ -442,21 +445,23 @@ def generer_fourmis():
         poly = canva.create_polygon(fleche_dir(x, y, direction), width=0, fill="lightblue")
         fourmis.append({"x": x, "y": y, "dir": direction, "poly": poly})
 
+=======
+>>>>>>> 1f26f1bcf6167536b1002f51a26ffb56f20a506d
 # nb_fourmie = tk.Button(window, text="nombre de fourmie", bg="#251F33",
 #                    fg=color2, font=("Impact", 14), bd=1,
 #                    highlightthickness=0, activeforeground="#251F33",
 #                    activebackground=color2, command=nombre_fourmie)
 # nb fourmie
-nb_fourmie = tk.Label(text=f"Nombre de fourmie : {nombre_four}",
-               bg="#251F33", fg=color2, width=15)
+nb_fourmie = tk.Label(text=f"Nb de fourmie : {nombre_four}",
+                      bg="#251F33", fg=color2, width=15)
 nb_fourmie_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
-                     font=("Arial", 14), activeforeground="#251F33",
-                     activebackground=color2,
-                     width=1, height=1, command=plus_f)
+                            font=("Arial", 14), activeforeground="#251F33",
+                            activebackground=color2,
+                            width=1, height=1, command=plus_f)
 nb_fourmie_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
-                      font=("Arial", 14), width=1, height=1,
-                      activeforeground="#251F33",
-                      activebackground=color2, command=moins_f)
+                             font=("Arial", 14), width=1, height=1,
+                             activeforeground="#251F33",
+                             activebackground=color2, command=moins_f)
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
@@ -506,8 +511,8 @@ vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
 # Affichage des labels et boutons ci-dessus
 
 nb_fourmie.grid(row=3, column=0, sticky="s", pady=150, padx=10)
-nb_fourmie_plus.grid(row=3, column=0, sticky="s",pady=110, padx=10)
-nb_fourmie_moins.grid(row=3, column=0, sticky="sw",pady=110, padx=30)
+nb_fourmie_plus.grid(row=3, column=0, sticky="s", pady=110, padx=10)
+nb_fourmie_moins.grid(row=3, column=0, sticky="sw", pady=110, padx=30)
 
 resset.grid(row=0, column=1)
 
