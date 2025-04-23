@@ -1,27 +1,30 @@
 import tkinter as tk
 import json
+import valeurs_variables_menu as vv
+
+vv.charge()
 
 taille_carre = 10
 larg, haut = 900, 700
-k, u = 45, 35
-speed = 10
+k, u = vv.kf, vv.uf
+speed = vv.speedf
 itération = 0
-direction1 = "n"
+direction1 = vv.direction1f
 direction2 = "n"
 pauses = True
 cases = []
 couleur = []
-suite = "gggd"
+suite = vv.suitef
 if len(suite) == 2:
     color = ["white", "black"]
 elif len(suite) == 3:
-    color = ["green", "red", "dodgerblue"]
+    color = ["white", "red", "dodgerblue"]
 elif len(suite) == 4:
-    color = ["green", "yellow", "red", "dodgerblue"]
+    color = ["white", "yellow", "red", "dodgerblue"]
 elif len(suite) == 5:
-    color = ["green", "yellow", "red", "purple", "dodgerblue"]
+    color = ["white", "yellow", "red", "purple", "dodgerblue"]
 elif len(suite) == 6:
-    color = ["green", "yellow", "orange", "red", "purple", "dodgerblue"]
+    color = ["white", "yellow", "orange", "red", "purple", "dodgerblue"]
 
 
 def couleur_fourmi():
