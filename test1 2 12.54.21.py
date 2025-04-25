@@ -16,6 +16,8 @@ direction2 = "n"
 pauses = True
 cases = []
 couleur = []
+fourmis_generees = False
+index_fourmi = 0
 
 
 window = tk.Tk()
@@ -101,15 +103,24 @@ def passage_mural():
 
 def pause():
     """met en pause ou démarre, et si y'a plus d'une fourmie, elle pop"""
-    global pauses
+    global pauses , fourmis_generees
+    
     if pauses == True:
         pauses = False
     else:
         pauses = True
+    
+    
+    if nombre_four  > 1:
+        print(fourmis_generees)
+        if not fourmis_generees: 
+            print(fourmis_generees)
 
-    if nombre_four > 1:
-        generer_fourmis()
+            generer_fourmis()
+            fourmis_generees = True
         deplacement_multi()
+
+
     else:
         deplacement()
 
@@ -166,68 +177,67 @@ def deplacement():
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
-
-
 def deplacement_multi():
-    """Programme le mouvemen de toute les fourmie en meme temp"""
-    global fourmis, couleur, cases, itération
-    if pauses == False:
-        for f in fourmis:
-            canva.delete(f["poly"])
-            x = f["x"]
-            y = f["y"]
-            direction2 = f["dir"]
+    """Fait avancer les fourmis une par une (tour par tour)."""
+    global fourmis, couleur, cases, itération, index_fourmi
 
-            if couleur[x][y] == 0:
-                canva.itemconfig(cases[x][y], fill=color2)
-                couleur[x][y] = 1
-                if direction2 == "s":
-                    direction2 = "w"
-                    x -=  1
-                elif direction2 == "w":
-                    direction2 = "n"
-                    y -=  1
-                elif direction2 == "n":
-                    direction2 = "e"
-                    x +=  1
-                elif direction2 == "e":
-                    direction2 = "s"
-                    y +=  1
-            elif couleur[x][y] == 1:
-                canva.itemconfig(cases[x][y], fill=color1)
-                couleur[x][y] = 0
-                if direction2 == "s":
-                    direction2 = "e"
-                    x +=  1
-                elif direction2 == "e":
-                    direction2 = "n"
-                    y -=  1
-                elif direction2 == "n":
-                    direction2 = "w"
-                    x -=  1
-                elif direction2 == "w":
-                    direction2 = "s"
-                    y +=  1
+    if pauses is False and fourmis:
+        f = fourmis[index_fourmi]
+        canva.delete(f["poly"])
+        x = f["x"]
+        y = f["y"]
+        direction = f["dir"]
+        if couleur[x][y] == 0:
+            canva.itemconfig(cases[x][y], fill=color2)
+            couleur[x][y] = 1
+            if direction == "s":
+                direction = "w"
+                x -= 1
+            elif direction == "w":
+                direction = "n"
+                y -= 1
+            elif direction == "n":
+                direction = "e"
+                x += 1
+            elif direction == "e":
+                direction = "s"
+                y += 1
+        elif couleur[x][y] == 1:
+            canva.itemconfig(cases[x][y], fill=color1)
+            couleur[x][y] = 0
+            if direction == "s":
+                direction = "e"
+                x += 1
+            elif direction == "e":
+                direction = "n"
+                y -= 1
+            elif direction == "n":
+                direction = "w"
+                x -= 1
+            elif direction == "w":
+                direction = "s"
+                y += 1
 
-            # ici c pour pas que sa sort
-            if x > larg // taille_carre - 1:
-                x = 0
-            elif x < 0:
-                x = larg // taille_carre - 1
-            if y > haut // taille_carre - 1:
-                y = 0
-            elif y < 0:
-                y = haut // taille_carre - 1
+        if x > larg // taille_carre - 1:
+            x = 0
+        elif x < 0:
+            x = larg // taille_carre - 1
+        if y > haut // taille_carre - 1:
+            y = 0
+        elif y < 0:
+            y = haut // taille_carre - 1
 
-            f["x"] = x
-            f["y"] = y
-            f["dir"] = direction2
-            f["poly"] = canva.create_polygon(fleche_dir(x, y, direction2), width=0, fill="lightblue")
+        f["x"] = x
+        f["y"] = y
+        f["dir"] = direction
 
-        itération = itération + 1
-        nmb.config(text=f"Itération: {itération}")
+        f["poly"] = canva.create_polygon(fleche_dir(x, y, direction), width=0, fill="lightblue")
+        index_fourmi = (index_fourmi + 1) % len(fourmis)
+        if index_fourmi == 0:
+            itération += 1
+            nmb.config(text=f"Itération: {itération}")
+
         canva.after(speed, deplacement_multi)
-
 
 
 def reversse():
@@ -279,6 +289,7 @@ def reversse():
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction2 = "e"
+                
         fourmi = canva.create_polygon(fleche(direction2), width=0,
                                       fill="lightblue")
         canva.after(speed, reversse)
@@ -305,25 +316,30 @@ def undoo():
         reversse()
     pauses = True
 
-
 def reset():
     """Fonction qui reconfigure la grille, dans la situation initiale"""
-    global pauses, k, u, direction2, itération, fourmi, speed
-    canva.delete(fourmi)
+    global pauses, k, u, direction2, itération, speed, fourmis, fourmis_generees
+
     for i in range(len(cases)):
         for j in range(len(cases[0])):
             canva.itemconfig(cases[i][j], fill=color1)
             couleur[i][j] = 0
+
+    for f in fourmis:
+        canva.delete(f["poly"])
+
     k, u = 45, 35
     pauses = True
     itération = 0
     speed = 10
     direction2 = direction1
     nmb.config(text=f"Itération: {itération}")
-    vitesse.config(text=f"Tps/Itérations: {speed}")
+    vitesse.config(text=f"Tps/Itérations: {speed}ms")
+    fourmis.clear()
+    fourmis_generees = False
 
-    fourmi = canva.create_polygon(fleche(direction2), width=0,
-                                  fill="lightblue")
+
+     
 
 
 def moins():
@@ -401,11 +417,13 @@ def charger():
 
 
 
-#""" cree d'autre fourmie 
+
+
 def nombre_fourmie():
     """ permet de  demander a l'utilisateur a nombre de fourmie """
-    nombre_fourmie= int(input("nombre de fourmie"))
+    nombre_fourmie = int(input("nombre de fourmie"))
     return nombre_fourmie
+
 
 def moins_f():
     """Réduit la vitesse de la fourmi"""
@@ -426,6 +444,7 @@ def plus_f():
 
 
 fourmis = []
+
 def generer_fourmis():
     global fourmis, nombre_four
     fourmis.clear()
@@ -441,16 +460,16 @@ def generer_fourmis():
 #                    highlightthickness=0, activeforeground="#251F33",
 #                    activebackground=color2, command=nombre_fourmie)
 # nb fourmie
-nb_fourmie = tk.Label(text=f"Nombre de fourmie : {nombre_four}",
-               bg="#251F33", fg=color2, width=15)
+nb_fourmie = tk.Label(text=f"Nb de fourmie : {nombre_four}",
+                      bg="#251F33", fg=color2, width=15)
 nb_fourmie_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
-                     font=("Arial", 14), activeforeground="#251F33",
-                     activebackground=color2,
-                     width=1, height=1, command=plus_f)
+                            font=("Arial", 14), activeforeground="#251F33",
+                            activebackground=color2,
+                            width=1, height=1, command=plus_f)
 nb_fourmie_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
-                      font=("Arial", 14), width=1, height=1,
-                      activeforeground="#251F33",
-                      activebackground=color2, command=moins_f)
+                             font=("Arial", 14), width=1, height=1,
+                             activeforeground="#251F33",
+                             activebackground=color2, command=moins_f)
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
@@ -500,8 +519,8 @@ vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
 # Affichage des labels et boutons ci-dessus
 
 nb_fourmie.grid(row=3, column=0, sticky="s", pady=150, padx=10)
-nb_fourmie_plus.grid(row=3, column=0, sticky="s",pady=110, padx=10)
-nb_fourmie_moins.grid(row=3, column=0, sticky="sw",pady=110, padx=30)
+nb_fourmie_plus.grid(row=3, column=0, sticky="s", pady=110, padx=10)
+nb_fourmie_moins.grid(row=3, column=0, sticky="sw", pady=110, padx=30)
 
 resset.grid(row=0, column=1)
 

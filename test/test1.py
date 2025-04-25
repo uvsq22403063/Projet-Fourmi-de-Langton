@@ -16,7 +16,7 @@ direction2 = "n"
 pauses = True
 cases = []
 couleur = []
-nb_fourmies = []
+fourmis_generees = False
 
 
 window = tk.Tk()
@@ -102,15 +102,24 @@ def passage_mural():
 
 def pause():
     """met en pause ou démarre, et si y'a plus d'une fourmie, elle pop"""
-    global pauses
+    global pauses , fourmis_generees
+    
     if pauses == True:
         pauses = False
     else:
         pauses = True
+    
+    
+    if nombre_four  > 1:
+        print(fourmis_generees)
+        if not fourmis_generees: 
+            print(fourmis_generees)
 
-    if nombre_four > 1:
-        generer_fourmis()
+            generer_fourmis()
+            fourmis_generees = True
         deplacement_multi()
+
+
     else:
         deplacement()
 
@@ -310,7 +319,7 @@ def undoo():
 
 def reset():
     """Fonction qui reconfigure la grille, dans la situation initiale"""
-    global pauses, k, u, direction2, itération, fourmi, speed,canvas , nb_fourmie
+    global pauses, k, u, direction2, itération, fourmi, speed,canva , fourmis ,fourmis_generees
     canva.delete(fourmi)
     for i in range(len(cases)):
         for j in range(len(cases[0])):
@@ -326,10 +335,12 @@ def reset():
 
     fourmi = canva.create_polygon(fleche(direction2), width=0,
                                   fill="lightblue")
-    nb_fourmies.append(fourmi)
-    for i in nb_fourmie:
-        canvas.delete(i)
-    nb_fourmie.clear()
+    fourmis.append(fourmi)
+    for i in fourmis:
+        canva.delete( i["poly"])
+    fourmis.clear()
+    fourmis_generees = False
+     
 
 
 def moins():
@@ -432,7 +443,6 @@ def plus_f():
     nombre_four += 1
     nb_fourmie.config(text=f"Nombre de fourmie : {nombre_four}")
 
-<<<<<<< HEAD
 
 fourmis = []
 def generer_fourmis():
@@ -445,8 +455,6 @@ def generer_fourmis():
         poly = canva.create_polygon(fleche_dir(x, y, direction), width=0, fill="lightblue")
         fourmis.append({"x": x, "y": y, "dir": direction, "poly": poly})
 
-=======
->>>>>>> 1f26f1bcf6167536b1002f51a26ffb56f20a506d
 # nb_fourmie = tk.Button(window, text="nombre de fourmie", bg="#251F33",
 #                    fg=color2, font=("Impact", 14), bd=1,
 #                    highlightthickness=0, activeforeground="#251F33",
