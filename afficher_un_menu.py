@@ -49,7 +49,7 @@ def variables():
 def lancer():
     """lance le programme "couleurs4"""
 
-    subprocess.run(["python", ".\\suite_de_couleurs.py"])
+    subprocess.run(["python", ".\\fourmi\\suite_de_couleurs.py"])
 
 
 window = tk.Tk()
@@ -65,11 +65,13 @@ frame_speed = tk.Frame(window, height=50, width=20)
 frame_coord = tk.Frame(window)
 frame_direc = tk.Frame(window)
 frame_suite = tk.Frame(window)
+frame_nb = tk.Frame(window)
 
 frame_speed.grid(row=1)
 frame_coord.grid(row=2)
 frame_direc.grid(row=3)
 frame_suite.grid(row=4)
+frame_nb.grid(row=5)
 
 # ajout des labels et champs de texte pour les variables
 # vitesse
@@ -108,10 +110,18 @@ label_suite.pack(side="left")
 txt_suite = tk.Entry(frame_suite, font=("Arial", 14))
 txt_suite.pack(side="left")
 
+# nombre de fourmis
+
+label_nb = tk.Label(frame_nb, text="Nombre de Fourmis:",
+                    font=("Arial", 14))
+label_nb.pack(side="left")
+txt_nb = tk.Entry(frame_nb, font=("Arial", 14))
+txt_nb.pack(side="right")
+
 # bouton jouer
 
 jouer = tk.Button(window, text="JOUER", command=variables)
-jouer.grid(row=5, column=0, pady=20)
+jouer.grid(row=6, column=0, pady=20)
 
 # création truc en haut à gauche
 

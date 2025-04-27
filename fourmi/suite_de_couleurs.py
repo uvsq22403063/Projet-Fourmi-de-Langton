@@ -1,5 +1,5 @@
 import tkinter as tk
-from fourmi import valeurs_variables_menu as vv
+import valeurs_variables_menu as vv
 import json
 
 path = ".\\fourmi\\donnee_grille.json"
