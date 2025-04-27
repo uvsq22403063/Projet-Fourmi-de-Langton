@@ -11,6 +11,7 @@ def variables():
     speedf = int(txt_speed.get())
     direction1f = str(txt_direc.get())
     suitef = str(txt_suite.get())
+    nbf = int(txt_nb.get())
 
     if direction1f[0] == "n":
         direction1f = "n"
@@ -39,15 +40,20 @@ def variables():
     if len(suitef) > 6:
         suitef = "gd"
 
+    if nbf < 1:
+        nbf = 1
+    elif nbf > 6:
+        nbf = 6
+
     suitef.lower()
 
-    vv.sauvegardes(kf, uf, speedf, direction1f, suitef)
-
-    lancer()
+    vv.sauvegardes(kf, uf, speedf, direction1f, suitef, nbf)
 
 
 def lancer():
     """lance le programme "couleurs4"""
+
+    variables()
 
     subprocess.run(["python", ".\\fourmi\\suite_de_couleurs.py"])
 
@@ -120,7 +126,7 @@ txt_nb.pack(side="right")
 
 # bouton jouer
 
-jouer = tk.Button(window, text="JOUER", command=variables)
+jouer = tk.Button(window, text="JOUER", command=lancer)
 jouer.grid(row=6, column=0, pady=20)
 
 # création truc en haut à gauche

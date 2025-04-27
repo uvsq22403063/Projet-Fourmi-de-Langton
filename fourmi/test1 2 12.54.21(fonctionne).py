@@ -71,6 +71,7 @@ def fleche(dir):
 
 fourmi = canva.create_polygon(fleche(direction2), width=0, fill="lightblue")
 
+
 def fleche_dir(k, u, dir):
     if dir == "w":
         return (k * 10 + 2, u * 10 + 5, k * 10 + 8, u * 10 + 2,
@@ -84,7 +85,6 @@ def fleche_dir(k, u, dir):
     elif dir == "s":
         return (k * 10 + 5, u * 10 + 8, k * 10 + 2, u * 10 + 2,
                 k * 10 + 5, u * 10 + 4, k * 10 + 8, u * 10 + 2)
-
 
 
 def passage_mural():
@@ -103,24 +103,21 @@ def passage_mural():
 
 def pause():
     """met en pause ou démarre, et si y'a plus d'une fourmie, elle pop"""
-    global pauses , fourmis_generees
-    
-    if pauses == True:
+    global pauses, fourmis_generees
+
+    if pauses is True:
         pauses = False
     else:
         pauses = True
-    
-    
-    if nombre_four  > 1:
+
+    if nombre_four > 1:
         print(fourmis_generees)
-        if not fourmis_generees: 
+        if not fourmis_generees:
             print(fourmis_generees)
 
             generer_fourmis()
             fourmis_generees = True
         deplacement_multi()
-
-
     else:
         deplacement()
 
@@ -177,6 +174,8 @@ def deplacement():
         canva.after(speed, deplacement)
         itération += 1
         nmb.config(text=f"Itération: {itération}")
+
+
 def deplacement_multi():
     """Fait avancer les fourmis une par une (tour par tour)."""
     global fourmis, couleur, cases, itération, index_fourmi
@@ -231,7 +230,8 @@ def deplacement_multi():
         f["y"] = y
         f["dir"] = direction
 
-        f["poly"] = canva.create_polygon(fleche_dir(x, y, direction), width=0, fill="lightblue")
+        f["poly"] = canva.create_polygon(fleche_dir(x, y, direction),
+                                         width=0, fill="lightblue")
         index_fourmi = (index_fourmi + 1) % len(fourmis)
         if index_fourmi == 0:
             itération += 1
@@ -289,7 +289,7 @@ def reversse():
                 canva.itemconfig(cases[k][u], fill=color1)
                 couleur[k][u] = 0
                 direction2 = "e"
-                
+
         fourmi = canva.create_polygon(fleche(direction2), width=0,
                                       fill="lightblue")
         canva.after(speed, reversse)
@@ -316,9 +316,11 @@ def undoo():
         reversse()
     pauses = True
 
+
 def reset():
     """Fonction qui reconfigure la grille, dans la situation initiale"""
-    global pauses, k, u, direction2, itération, speed, fourmis, fourmis_generees
+    global pauses, k, u, direction2, itération
+    global speed, fourmis, fourmis_generees
 
     for i in range(len(cases)):
         for j in range(len(cases[0])):
@@ -337,9 +339,6 @@ def reset():
     vitesse.config(text=f"Tps/Itérations: {speed}ms")
     fourmis.clear()
     fourmis_generees = False
-
-
-     
 
 
 def moins():
@@ -384,7 +383,7 @@ def charger():
     global direction1, direction2, speed, couleur, cases
     global fourmi, pauses
     pauses = True
-    canva.delete(fourmi) 
+    canva.delete(fourmi)
 
     fichier = open('donnee_grille.json', 'r')
     # données = fichier.read()
@@ -416,9 +415,6 @@ def charger():
     print("chargement de la grille")
 
 
-
-
-
 def nombre_fourmie():
     """ permet de  demander a l'utilisateur a nombre de fourmie """
     nombre_fourmie = int(input("nombre de fourmie"))
@@ -445,6 +441,7 @@ def plus_f():
 
 fourmis = []
 
+
 def generer_fourmis():
     global fourmis, nombre_four
     fourmis.clear()
@@ -452,7 +449,8 @@ def generer_fourmis():
         x = random.randint(0, larg // taille_carre - 1)
         y = random.randint(0, haut // taille_carre - 1)
         direction = random.choice(["n", "s", "e", "w"])
-        poly = canva.create_polygon(fleche_dir(x, y, direction), width=0, fill="lightblue")
+        poly = canva.create_polygon(fleche_dir(x, y, direction),
+                                    width=0, fill="lightblue")
         fourmis.append({"x": x, "y": y, "dir": direction, "poly": poly})
 
 # nb_fourmie = tk.Button(window, text="nombre de fourmie", bg="#251F33",
@@ -460,6 +458,8 @@ def generer_fourmis():
 #                    highlightthickness=0, activeforeground="#251F33",
 #                    activebackground=color2, command=nombre_fourmie)
 # nb fourmie
+
+
 nb_fourmie = tk.Label(text=f"Nb de fourmie : {nombre_four}",
                       bg="#251F33", fg=color2, width=15)
 nb_fourmie_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
