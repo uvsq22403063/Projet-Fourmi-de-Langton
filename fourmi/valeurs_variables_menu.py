@@ -1,5 +1,7 @@
 import json
 
+path = ".\\fourmi\\valeurs.json"
+
 kf, uf, speedf, direction1f, suitef = 0, 0, 0, 0, 0
 
 
@@ -9,7 +11,7 @@ def sauvegardes(k, u, speed, direction1, suite):
     variables = {"kf": k, "uf": u, "speedf": speed,
                  "direction1f": direction1, "suitef": suite}
 
-    fichier = open('valeurs.json', 'w')
+    fichier = open(path, 'w')
 
     json.dump(variables, fichier)
     print("sauvegarde des variables")
@@ -20,7 +22,7 @@ def charge():
     """permet de charger les variables """
     global kf, uf, speedf, direction1f, suitef
 
-    fichier = open('valeurs.json', 'r')
+    fichier = open(path, 'r')
 
     variables = json.load(fichier)
 

@@ -1,8 +1,11 @@
 import tkinter as tk
+from fourmi import valeurs_variables_menu as vv
 import json
-import valeurs_variables_menu as vv
+
+path = ".\\fourmi\\donnee_grille.json"
 
 vv.charge()
+
 
 taille_carre = 10
 larg, haut = 900, 700
@@ -307,7 +310,7 @@ def sauvegarde():
                     "direction1": direction1, "direction2": direction2,
                     "vitesse": speed, "couleur_cases2": couleur}
 
-    fichier = open('donnee_grille.json', 'w')
+    fichier = open(path, 'w')
 
     json.dump(etat_fourmis, fichier)
     print("sauvegarde de la grille ")
@@ -322,7 +325,7 @@ def charger():
     pauses = True
     canva.delete(fourmi)
 
-    fichier = open('donnee_grille.json', 'r')
+    fichier = open(path, 'r')
     # données = fichier.read()
     etat_fourmis = json.load(fichier)
     fichier.close()

@@ -1,6 +1,6 @@
 import tkinter as tk
 import json
-import valeurs_variables_menu as vv
+from fourmi import valeurs_variables_menu as vv
 
 vv.charge()
 

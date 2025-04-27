@@ -1,6 +1,6 @@
 import tkinter as tk
 import subprocess
-import valeurs_variables_menu as vv
+from fourmi import valeurs_variables_menu as vv
 
 
 def variables():
@@ -49,7 +49,7 @@ def variables():
 def lancer():
     """lance le programme "couleurs4"""
 
-    subprocess.run(["python", ".\\test\\suite_de_couleurs.py"])
+    subprocess.run(["python", ".\\suite_de_couleurs.py"])
 
 
 window = tk.Tk()
