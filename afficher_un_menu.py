@@ -164,3 +164,8 @@ menu_bar.add_command(label="quitter", command=window.destroy)
 menui.add_cascade(label="fichier", menu=menu_bar)
 window.config(menu=menui)
 window.mainloop()
+
+# ChatGPT a été utilisé afin de me documenter sur l'utilisation de la fonction
+# "subprocess", ainsi que pour aider à résoudre certaines erreurs qui étaient
+# liées à l'importation des autres fichiers et afin de transformer le projet
+# en "package"
