@@ -273,7 +273,7 @@ def sauvegarde():
                     "direction1": direction1, "direction2": direction2,
                     "vitesse": speed, "couleur_cases2": couleur}
 
-    fichier = open('donnee_grille.json', 'w')
+    fichier = open('.\\fourmi\\donnee_grille.json', 'w')
 
     json.dump(etat_fourmis, fichier)
     print("sauvegarde de la grille ")
@@ -289,7 +289,6 @@ def charger():
     canva.delete(fourmi)
 
     fichier = open('donnee_grille.json', 'r')
-    # données = fichier.read()
     etat_fourmis = json.load(fichier)
     fichier.close()
 
@@ -316,9 +315,6 @@ def charger():
                 canva.itemconfig(cases[i][v], fill=color2)
 
     print("chargement de la grille")
-
-# play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
-#                 bd=0, highlightthickness=0, command=deplacement)
 
 
 # Reset de la grille
