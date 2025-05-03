@@ -50,8 +50,16 @@ def variables():
     vv.sauvegardes(kf, uf, speedf, direction1f, suitef, nbf)
 
 
-def lancer():
-    """lance le programme "couleurs4"""
+def lancer1():
+    """lance le programme "main"""
+
+    variables()
+
+    subprocess.run(["python", ".\\fourmi\\main.py"])
+
+
+def lancer2():
+    """lance le programme "main"""
 
     variables()
 
@@ -124,10 +132,28 @@ label_nb.pack(side="left")
 txt_nb = tk.Entry(frame_nb, font=("Arial", 14))
 txt_nb.pack(side="right")
 
-# bouton jouer
+# boutons jouer
 
-jouer = tk.Button(window, text="JOUER", command=lancer)
-jouer.grid(row=6, column=0, pady=20)
+# lancer V1
+
+jouer1 = tk.Button(window, text="JOUER (version de base)", command=lancer1)
+jouer1.grid(row=6, column=0, pady=20)
+
+# plusieurs couleurs
+
+jouer2 = tk.Button(window, text="JOUER (plus de couleurs)", command=lancer2)
+jouer2.grid(row=7, column=0)
+
+# plusieurs fourmis
+
+# jouer2 = tk.Button(window, text="JOUER (plus de couleurs)", command=lancer2)
+# jouer2.grid(row=7, column=0)
+
+# tous
+
+jouer4 = tk.Button(window, text="JOUER", command=lancer2)
+jouer4.grid(row=8, column=0, pady=20)
+
 
 # création truc en haut à gauche
 
