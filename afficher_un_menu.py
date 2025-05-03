@@ -151,8 +151,8 @@ jouer2.grid(row=7, column=0)
 
 # tous
 
-jouer4 = tk.Button(window, text="JOUER", command=lancer2)
-jouer4.grid(row=8, column=0, pady=20)
+# jouer4 = tk.Button(window, text="JOUER", command=lancer2)
+# jouer4.grid(row=8, column=0, pady=20)
 
 
 # création truc en haut à gauche
