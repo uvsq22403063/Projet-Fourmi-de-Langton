@@ -162,7 +162,7 @@ jouer2.grid(row=7, column=0)
 
 # plus de fourmis
 
-jouer3 = tk.Button(window, text="JOUER", command=lancer3)
+jouer3 = tk.Button(window, text="JOUER (plus de fourmis)", command=lancer3)
 jouer3.grid(row=8, column=0, pady=20)
 
 # plusieurs fourmis et couleurs
