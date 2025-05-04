@@ -9,7 +9,7 @@ taille_carre = 10
 larg, haut = 900, 700
 k, u = 45, 35
 speed = 10
-nombre_four = 1
+nombre_four = 3
 itération = 0
 direction1 = "n"
 direction2 = "n"
@@ -18,8 +18,6 @@ cases = []
 couleur = []
 fourmis_generees = False
 index_fourmi = 0
-
-
 
 window = tk.Tk()
 window.title("Fourmi de Langton")
@@ -108,9 +106,9 @@ def pause():
         pauses = True
 
     if not fourmis_generees:
-            print(fourmis_generees)
-            generer_fourmis()
-            fourmis_generees = True
+        print(fourmis_generees)
+        generer_fourmis()
+        fourmis_generees = True
     deplacement_multi()
 
 
@@ -341,7 +339,7 @@ def sauvegarde():
                     "direction1": direction1, "direction2": direction2,
                     "vitesse": speed, "couleur_cases2": couleur}
 
-    fichier = open('donnee_grille.json', 'w')
+    fichier = open('.\\fourmi\\donnee_grille.json', 'w')
 
     json.dump(etat_fourmis, fichier)
     print("sauvegarde de la grille ")
@@ -356,7 +354,7 @@ def charger():
     pauses = True
     canva.delete(fourmi)
 
-    fichier = open('donnee_grille.json', 'r')
+    fichier = open('.\\fourmi\\donnee_grille.json', 'r')
     # données = fichier.read()
     etat_fourmis = json.load(fichier)
     fichier.close()
@@ -386,30 +384,6 @@ def charger():
     print("chargement de la grille")
 
 
-def nombre_fourmie():
-    """ permet de  demander a l'utilisateur a nombre de fourmie """
-    nombre_fourmie = int(input("nombre de fourmie"))
-    return nombre_fourmie
-
-
-def moins_f():
-    """Réduit la vitesse de la fourmi"""
-
-    global nombre_four
-    if nombre_four >= 2:
-        nombre_four -= 1
-    else:
-        nombre_four == nombre_four
-    nb_fourmie.config(text=f"Nb fourmie : {nombre_four}")
-
-
-def plus_f():
-    """Augmente la vitesse de la fourmi"""
-    global nombre_four
-    nombre_four += 1
-    nb_fourmie.config(text=f"Nb de fourmie : {nombre_four}")
-
-
 fourmis = []
 
 
@@ -427,26 +401,15 @@ def generer_fourmis():
 # nb_fourmie = tk.Button(window, text="nombre de fourmie", bg="#251F33",
 #                    fg=color2, font=("Impact", 14), bd=1,
 #                    highlightthickness=0, activeforeground="#251F33",
-#                    activebackground=color2, command=nombre_fourmie)
+#                    activebackground=color2, command=nombre_fourmi)
 # nb fourmie
-
-
-nb_fourmie = tk.Label(text=f"Nb de fourmie : {nombre_four}",
-                      bg="#251F33", fg=color2, width=15)
-nb_fourmie_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
-                            font=("Arial", 14), activeforeground="#251F33",
-                            activebackground=color2,
-                            width=1, height=1, command=plus_f)
-nb_fourmie_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
-                             font=("Arial", 14), width=1, height=1,
-                             activeforeground="#251F33",
-                             activebackground=color2, command=moins_f)
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)
 
 
 # Reset de la grille
+
 resset = tk.Button(window, text="Reset", bg="#251F33",
                    fg=color2, font=("Impact", 14), bd=1,
                    highlightthickness=0, activeforeground="#251F33",
@@ -489,9 +452,6 @@ vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
 
 # Affichage des labels et boutons ci-dessus
 
-nb_fourmie.grid(row=3, column=0, sticky="s", pady=150, padx=10)
-nb_fourmie_plus.grid(row=3, column=0, sticky="s", pady=110, padx=10)
-nb_fourmie_moins.grid(row=3, column=0, sticky="sw", pady=110, padx=30)
 
 resset.grid(row=0, column=1)
 
