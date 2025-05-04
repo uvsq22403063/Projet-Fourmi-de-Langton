@@ -1,42 +1,36 @@
 import tkinter as tk
 import json
 import random as rd
+import valeurs_variables_menu as vv
+
+vv.charge()
+
+path = ".\\fourmi\\donnee_grille.json"
 
 color1 = "black"
 color2 = "#ff1b2d"
 taille_carre = 10
 larg, haut = 900, 700
-nb_fourmis = 30
+nb_fourmis = vv.nbf
 nb_finit = 0
-x, y = 33, 33
+x, y = vv.kf, vv.uf
 pos_x = []
 pos_y = []
 posx_init = []
 posy_init = []
 direction = []
 direction_init = []
-for g in range(nb_fourmis):
-    k = rd.randint(0, 89)
-    pos_x.append(k)
-    posx_init.append(k)
-    u = rd.randint(0, 69)
-    pos_y.append(u)
-    posy_init.append(u)
-    v = rd.choice(["n", "e", "s", "w"])
-    direction.append(v)
-    direction_init.append(v)
-    nb_finit += 1
 
 indice = 0
-speed = 10
+speed = vv.speedf
 itération = 0
-direction1 = "n"
+direction1 = vv.direction1f
 direction2 = "n"
 pauses = True
 cases = []
 couleur = []
 fourmis = []
-suite = "dddgg"
+suite = vv.suitef
 suite_init = suite
 if len(suite) == 2:
     color = ["black", "#ff1b2d"]
@@ -48,6 +42,32 @@ elif len(suite) == 5:
     color = ["black", "yellow", "#ff1b2d", "#8A00C4", "#25fde9"]
 elif len(suite) == 6:
     color = ["black", "yellow", "#00ff1a", "#ff1b2d", "#8A00C4", "#25fde9"]
+
+if nb_fourmis == 1:
+    k, u = x, y
+    pos_x.append(k)
+    posx_init.append(k)
+    pos_y.append(u)
+    posy_init.append(u)
+    v = direction1
+    direction.append(v)
+    direction_init.append(v)
+    nb_finit += 1
+else:
+    for g in range(nb_fourmis):
+        k = rd.randint(0, 89)
+        u = rd.randint(0, 69)
+
+        pos_x.append(k)
+        posx_init.append(k)
+
+        pos_y.append(u)
+        posy_init.append(u)
+        v = rd.choice(["n", "e", "s", "w"])
+        direction.append(v)
+        direction_init.append(v)
+        nb_finit += 1
+
 color_init = color
 
 window = tk.Tk()
@@ -228,8 +248,9 @@ def deplacement():
             fourmis[i] = canva.create_polygon(fleche(direction[i]), width=0,
                                               fill="lightblue")
             passage_mural(indice)
+            itération += 1
         canva.after(speed, deplacement)
-        itération += 1
+
         nmb.config(text=f"Itération: {itération}")
 
 
@@ -286,8 +307,8 @@ def reversse():
                     direction[indice] = "e"
             fourmis[indice] = canva.create_polygon(fleche(direction[indice]),
                                                    width=0, fill="lightblue")
+            itération -= 1
         canva.after(speed, reversse)
-        itération -= 1
         nmb.config(text=f"Itération: {itération}")
 
 
@@ -378,10 +399,9 @@ def sauvegarde():
                     "nb_fourmi": nb_fourmis, "suitesave": suite,
                     "colorsave": color}
 
-    fichier = open('donnee_grille.json', 'w')
+    fichier = open(path, 'w')
 
     json.dump(etat_fourmis, fichier)
-    print("sauvegarde de la grille ")
     fichier.close()
 
 
@@ -393,7 +413,7 @@ def charger():
     pauses = True
     for k in range(nb_fourmis):
         canva.delete(fourmis[k])
-    fichier = open('donnee_grille.json', 'r')
+    fichier = open(path, 'r')
     # données = fichier.read()
     etat_fourmis = json.load(fichier)
     fichier.close()
@@ -423,7 +443,6 @@ def charger():
 
         for m in range(len(cases[i])):
             canva.itemconfig(cases[i][m], fill=color[couleur[i][m]])
-    print("chargement de la grille")
 
 # play = tk.Button(window, text="Start", bg="grey", font=("Impact", 14),
 #                 bd=0, highlightthickness=0, command=deplacement)

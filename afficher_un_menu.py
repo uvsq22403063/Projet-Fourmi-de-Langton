@@ -66,6 +66,14 @@ def lancer2():
     subprocess.run(["python", ".\\fourmi\\suite_de_couleurs.py"])
 
 
+def lancer3():
+    """lance le programme "main"""
+
+    variables()
+
+    subprocess.run(["python", ".\\fourmi\\plusieurs_couleur_et_fourmis.py"])
+
+
 window = tk.Tk()
 window.config(bg="lightgrey")
 window.geometry("860x480")
@@ -146,8 +154,8 @@ jouer2.grid(row=7, column=0)
 
 # plusieurs fourmis
 
-# jouer2 = tk.Button(window, text="JOUER (plus de couleurs)", command=lancer2)
-# jouer2.grid(row=7, column=0)
+jouer3 = tk.Button(window, text="JOUER", command=lancer3)
+jouer3.grid(row=8, column=0, pady=20)
 
 # tous
 
