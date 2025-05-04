@@ -7,8 +7,8 @@ vv.charge()
 
 path = ".\\fourmi\\donnee_grille.json"
 
-color1 = "black"
-color2 = "#ff1b2d"
+color1 = "white"
+color2 = "black"
 taille_carre = 10
 larg, haut = 900, 700
 nb_fourmis = vv.nbf
@@ -33,15 +33,24 @@ fourmis = []
 suite = vv.suitef
 suite_init = suite
 if len(suite) == 2:
-    color = ["black", "#ff1b2d"]
+    color = ["white", "black"]
 elif len(suite) == 3:
-    color = ["black", "#ff1b2d", "#25fde9"]
+    color = ["white", "red", "dodgerblue"]
 elif len(suite) == 4:
-    color = ["black", "yellow", "#ff1b2d", "#25fde9"]
+    color = ["white", "yellow", "red", "dodgerblue"]
 elif len(suite) == 5:
-    color = ["black", "yellow", "#ff1b2d", "#8A00C4", "#25fde9"]
+    color = ["white", "yellow", "red", "purple", "dodgerblue"]
 elif len(suite) == 6:
-    color = ["black", "yellow", "#00ff1a", "#ff1b2d", "#8A00C4", "#25fde9"]
+    color = ["white", "yellow", "orange", "red", "purple", "dodgerblue"]
+
+
+def couleur_fourmi():
+    global suite
+    if len(suite) == 2:
+        return "grey"
+    else:
+        return "black"
+
 
 if nb_fourmis == 1:
     k, u = x, y
@@ -72,7 +81,7 @@ color_init = color
 
 window = tk.Tk()
 window.title("Fourmi de Langton")
-window.config(bg="#0a0a0a")
+window.config(bg="grey70")
 canva = tk.Canvas(window, width=larg, height=haut, bd=0, highlightthickness=0)
 
 
@@ -85,7 +94,7 @@ for i in range(larg // taille_carre):
         y0 = j * 10
         x1 = (i+1) * 10
         y1 = (j+1) * 10
-        carre = canva.create_rectangle(x0, y0, x1, y1, outline="#251F33",
+        carre = canva.create_rectangle(x0, y0, x1, y1, outline="lightgrey",
                                        fill=color1, width=1)
         colonnes.append(carre)
         colonnes_couleur.append(0)
@@ -134,7 +143,7 @@ def fleche_init(dir, x, y):
 for i in range(nb_fourmis):
     fleches = canva.create_polygon(fleche_init(direction[i], posx_init[i],
                                    posy_init[i]), width=0,
-                                   fill="lightblue")
+                                   fill=couleur_fourmi())
     fourmis.append(fleches)
 
 
@@ -246,7 +255,7 @@ def deplacement():
                 canva.itemconfig(cases[x][y], fill=color[couleur[x][y]])
                 gauche(indice)
             fourmis[i] = canva.create_polygon(fleche(direction[i]), width=0,
-                                              fill="lightblue")
+                                              fill=couleur_fourmi())
             passage_mural(indice)
             itération += 1
         canva.after(speed, deplacement)
@@ -306,7 +315,8 @@ def reversse():
                 elif suite[couleur[x][y]] == "d":
                     direction[indice] = "e"
             fourmis[indice] = canva.create_polygon(fleche(direction[indice]),
-                                                   width=0, fill="lightblue")
+                                                   width=0,
+                                                   fill=couleur_fourmi())
             itération -= 1
         canva.after(speed, reversse)
         nmb.config(text=f"Itération: {itération}")
@@ -345,7 +355,7 @@ def reset():
     for m in range(nb_fourmis):
         fleches = canva.create_polygon(fleche_init(direction_init[m],
                                        posx_init[m], posy_init[m]), width=0,
-                                       fill="lightblue")
+                                       fill=couleur_fourmi())
         fourmis.append(fleches)
     pos_x = []
     pos_y = []
@@ -435,7 +445,7 @@ def charger():
     for z in range(nb_fourmis):
         fleches = canva.create_polygon(fleche_init(direction[z],
                                        pos_x[z], pos_y[z]), width=0,
-                                       fill="lightblue")
+                                       fill=couleur_fourmi())
         fourmis.append(fleches)
     vitesse.config(text=f"Tps/itérations: {speed}ms")
     nmb.config(text=f"Itération: {itération}")
@@ -449,43 +459,43 @@ def charger():
 
 
 # Reset de la grille
-resset = tk.Button(window, text="Reset", bg="#251F33",
+resset = tk.Button(window, text="Reset", bg="lightgrey",
                    fg=color2, font=("Impact", 14), bd=1,
-                   highlightthickness=0, activeforeground="#251F33",
+                   highlightthickness=0, activeforeground="lightgrey",
                    activebackground=color2, command=reset)
 
 # Boutons PLAY/PAUSE et reverse
-pausse = tk.Button(window, text="Play/pause", bg="#251F33",
+pausse = tk.Button(window, text="Play/pause", bg="lightgrey",
                    fg=color2, font=("Impact", 14), bd=1,
-                   highlightthickness=0, activeforeground="#251F33",
+                   highlightthickness=0, activeforeground="lightgrey",
                    activebackground=color2, command=pause)
-reverse = tk.Button(window, text="Reverse", bg="#251F33",
+reverse = tk.Button(window, text="Reverse", bg="lightgrey",
                     fg=color2, font=("Impact", 14), bd=1,
-                    highlightthickness=0, activeforeground="#251F33",
+                    highlightthickness=0, activeforeground="lightgrey",
                     activebackground=color2, command=pause_reverse)
 
 # Boutons skip et undo
-skip = tk.Button(window, text="Skip", bg="#251F33",
+skip = tk.Button(window, text="Skip", bg="lightgrey",
                  fg=color2, font=("Impact", 14), bd=1,
-                 highlightthickness=0, activeforeground="#251F33",
+                 highlightthickness=0, activeforeground="lightgrey",
                  activebackground=color2, width=7, command=skipe)
-undo = tk.Button(window, text="Undo", bg="#251F33",
+undo = tk.Button(window, text="Undo", bg="lightgrey",
                  fg=color2, font=("Impact", 14), bd=1,
-                 highlightthickness=0, activeforeground="#251F33",
+                 highlightthickness=0, activeforeground="lightgrey",
                  activebackground=color2, width=7, command=undoo)
 
 # Vitesse de la clock
 vitesse = tk.Label(text=f"Tps/itérations: {speed}ms",
-                   bg="#251F33", fg=color2, width=15)
+                   bg="lightgrey", fg=color2, width=15)
 nmb = tk.Label(text=f"Itération: {itération}",
-               bg="#251F33", fg=color2, width=15)
-vit_plus = tk.Button(window, bg="#251F33", fg=color2, text="+",
-                     font=("Arial", 14), activeforeground="#251F33",
+               bg="lightgrey", fg=color2, width=15)
+vit_plus = tk.Button(window, bg="lightgrey", fg=color2, text="+",
+                     font=("Arial", 14), activeforeground="lightgrey",
                      activebackground=color2,
                      width=1, height=1, command=plus)
-vit_moins = tk.Button(window, bg="#251F33", fg=color2, text="-",
+vit_moins = tk.Button(window, bg="lightgrey", fg=color2, text="-",
                       font=("Arial", 14), width=1, height=1,
-                      activeforeground="#251F33",
+                      activeforeground="lightgrey",
                       activebackground=color2, command=moins)
 
 
