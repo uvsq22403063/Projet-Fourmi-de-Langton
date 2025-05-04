@@ -12,13 +12,19 @@ La Fourmi de Langton est un programme que l'on peut qualifier d'automate cellula
 Notre programme permet d'ajouter un nombre de fourmis choisis arbitrairement à la grille. De plus, nous pouvons ajouter jusqu'à six couleurs de cases à nos fourmis dont toutes les rotations sont modulables, ce qui permet d'observer de nouveaux comportements pour nos fourmis.
 Enfin, le programme dispose d'une fonction de sauvegarde qui sauvegarde l'entièreté de la grille (la position des fourmis et les motifs tracés par celles-ci).
 
+
 Lancement du programme:
 
-- exécutez le ficher "afficher_un_menu"
-- remplir les variables de bases voulues
-- choisir le mode de lancement du programme.
+- Exécutez le ficher "afficher_un_menu".
+   ( Dans un invite de commande entrer:
+    " cd [L'emplacement du dossier]"
+    " py afficher_un_menu.py" )
 
-- ⚠ il faut impérativement remplir les cases prévue à cet effet avant de lancer le programme.
+- Remplir les variables de bases voulues.
+- Choisir le mode de lancement du programme.
+
+- ⚠ Il faut impérativement remplir les cases prévue à cet effet avant de lancer le programme.
+
 
 Le lien vers notre github:
 [Lien vers le github](https://github.com/uvsq22403063/Projet-Fourmi-de-Langton)
