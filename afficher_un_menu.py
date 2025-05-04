@@ -74,6 +74,14 @@ def lancer3():
     subprocess.run(["python", ".\\fourmi\\plusieurs_couleur_et_fourmis.py"])
 
 
+def lancer4():
+    """lance le programme "main"""
+
+    variables()
+
+    subprocess.run(["python", ".\\fourmi\\plusieurs_couleur_et_fourmis.py"])
+
+
 window = tk.Tk()
 window.config(bg="lightgrey")
 window.geometry("860x480")
@@ -152,15 +160,15 @@ jouer1.grid(row=6, column=0, pady=20)
 jouer2 = tk.Button(window, text="JOUER (plus de couleurs)", command=lancer2)
 jouer2.grid(row=7, column=0)
 
-# plusieurs fourmis et couleurs
+# plus de fourmis
 
 jouer3 = tk.Button(window, text="JOUER", command=lancer3)
 jouer3.grid(row=8, column=0, pady=20)
 
-# tous
+# plusieurs fourmis et couleurs
 
-# jouer4 = tk.Button(window, text="JOUER", command=lancer2)
-# jouer4.grid(row=8, column=0, pady=20)
+jouer4 = tk.Button(window, text="JOUER", command=lancer4)
+jouer4.grid(row=9, column=0)
 
 
 # création truc en haut à gauche
