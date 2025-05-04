@@ -36,7 +36,7 @@ pauses = True
 cases = []
 couleur = []
 fourmis = []
-suite = "dg"
+suite = "dddgg"
 suite_init = suite
 if len(suite) == 2:
     color = ["black", "#ff1b2d"]
