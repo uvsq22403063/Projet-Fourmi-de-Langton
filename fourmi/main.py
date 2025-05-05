@@ -67,7 +67,7 @@ def fleche(dir):
     return coor
 
 
-fourmi = canva.create_polygon(fleche(direction2), width=0, fill="lightblue")
+fourmi = canva.create_polygon(fleche(direction1), width=0, fill="lightblue")
 
 
 def passage_mural():

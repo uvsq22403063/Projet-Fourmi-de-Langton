@@ -82,7 +82,7 @@ def fleche(dir):
     return coor
 
 
-fourmi = canva.create_polygon(fleche(direction2), width=0,
+fourmi = canva.create_polygon(fleche(direction1), width=0,
                               fill=couleur_fourmi())
 
 

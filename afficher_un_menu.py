@@ -71,7 +71,7 @@ def lancer3():
 
     variables()
 
-    subprocess.run(["python", ".\\fourmi\\plusieurs_couleur_et_fourmis.py"])
+    subprocess.run(["python", ".\\fourmi\\plus_fourmis.py"])
 
 
 def lancer4():
