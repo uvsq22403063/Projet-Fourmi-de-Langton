@@ -42,8 +42,6 @@ def variables():
 
     if nbf < 1:
         nbf = 1
-    elif nbf > 6:
-        nbf = 6
 
     suitef.lower()
 

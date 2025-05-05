@@ -44,14 +44,6 @@ elif len(suite) == 6:
     color = ["white", "yellow", "orange", "red", "purple", "dodgerblue"]
 
 
-def couleur_fourmi():
-    global suite
-    if len(suite) == 2:
-        return "grey"
-    else:
-        return "black"
-
-
 if nb_fourmis == 1:
     k, u = x, y
     pos_x.append(k)
@@ -143,7 +135,7 @@ def fleche_init(dir, x, y):
 for i in range(nb_fourmis):
     fleches = canva.create_polygon(fleche_init(direction[i], posx_init[i],
                                    posy_init[i]), width=0,
-                                   fill=couleur_fourmi())
+                                   fill="darkgrey")
     fourmis.append(fleches)
 
 
@@ -255,7 +247,7 @@ def deplacement():
                 canva.itemconfig(cases[x][y], fill=color[couleur[x][y]])
                 gauche(indice)
             fourmis[i] = canva.create_polygon(fleche(direction[i]), width=0,
-                                              fill=couleur_fourmi())
+                                              fill="darkgrey")
             passage_mural(indice)
             itération += 1
         canva.after(speed, deplacement)
@@ -316,7 +308,7 @@ def reversse():
                     direction[indice] = "e"
             fourmis[indice] = canva.create_polygon(fleche(direction[indice]),
                                                    width=0,
-                                                   fill=couleur_fourmi())
+                                                   fill="darkgrey")
             itération -= 1
         canva.after(speed, reversse)
         nmb.config(text=f"Itération: {itération}")
@@ -355,7 +347,7 @@ def reset():
     for m in range(nb_fourmis):
         fleches = canva.create_polygon(fleche_init(direction_init[m],
                                        posx_init[m], posy_init[m]), width=0,
-                                       fill=couleur_fourmi())
+                                       fill="darkgrey")
         fourmis.append(fleches)
     pos_x = []
     pos_y = []
@@ -445,7 +437,7 @@ def charger():
     for z in range(nb_fourmis):
         fleches = canva.create_polygon(fleche_init(direction[z],
                                        pos_x[z], pos_y[z]), width=0,
-                                       fill=couleur_fourmi())
+                                       fill="darkgrey")
         fourmis.append(fleches)
     vitesse.config(text=f"Tps/itérations: {speed}ms")
     nmb.config(text=f"Itération: {itération}")
