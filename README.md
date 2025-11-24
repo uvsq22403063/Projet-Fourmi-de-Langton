@@ -23,7 +23,7 @@ Lancement du programme:
 - Remplir les variables de bases voulues.
 - Choisir le mode de lancement du programme.
 
-- ⚠ Il faut impérativement remplir les cases prévue à cet effet avant de lancer le programme.
+- ⚠ Il faut impérativement remplir toutes les cases prévues à cet effet avant de lancer le programme.
 
 
 Le lien vers notre github:
